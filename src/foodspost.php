@@ -1,3 +1,5 @@
+<?php require('db/dbconnect-w.php'); ?>
+
 <?php
 session_start();
 ?>
@@ -13,6 +15,13 @@ session_start();
             場所 <br/> <input type="text" name="id"><br/>
             量　 <br/> <input type="text" name="id"><br/>
             メールアドレス <br/> <input type="email" name="mail"><br/>
-            <input type="submit" value="投稿">
+            <input type="submit" value="投稿" >
+
+<!-- 
+    ・ 投稿おしたら、メイン画面に戻るプログラム
+                　MySqlのテーブルにデータを保存させるプログラム
+    ・
+-->
+
         </form>
     </body>
