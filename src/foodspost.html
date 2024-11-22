@@ -6,11 +6,13 @@
     <title>投稿フォーム</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="foodspost.php" method="POST" enctype="multipart/form-data"></form>>
         画像: <input type="file" name="file"><br/>
-        名前: <br/><input type="text" name="name" required><br/>
-        場所: <br/><input type="text" name="place" required><br/>
+        商品名: <br/><input type="text" name="name" required><br/>
+        場所: <br/><input type="text" name="location" required><br/>
         量: <br/><input type="text" name="amount" required><br/>
+        値段: <br/><input type="text" name="price" required><br/>
+        消費期限: <br/><input type="date" name="expiration_date" required><br/>
         メールアドレス: <br/><input type="email" name="mail" required><br/>
         <input type="submit" value="投稿">
     </form>
