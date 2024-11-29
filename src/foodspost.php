@@ -10,12 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price = $_POST['price'] ?? '';
     $expiration_date = $_POST['expiration_date'] ?? '';
     $email = $_POST['email'] ?? '';
-    $post_date = date('Y-m-d');
+    $post_date = date('YYYY-MM-DD HH:MM:SS');
 
     // データベースに保存
-    if ($name && $location && $amount && $place && $expiration_date && $email) { // 必須フィールドを確認
-        $stmt = $db->prepare('INSERT INTO posts (name, location, amount, place, expiration_date, email) VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->bind_param('ssssss', $name, $location, $amount, $place, $expiration, $email); // 型指定 s=文字列
+    if ($name && $location && $amount && $price && $expiration_date && $email) { // 必須フィールドを確認
+        $stmt = $dbw->prepare('INSERT INTO posts (name, location, amount, place, expiration_date, email) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param('ssssss', $name, $location, $amount, $price, $expiration, $email); // 型指定 s=文字列
 
         if ($stmt->execute()) {
             // データ保存成功後に画面遷移
@@ -27,11 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo '全てのフィールドを入力してください。';
     }
-    //アップロード先ディレクトリ
-    //$uploadDir = 'postimg/';
 
-    //アップロードされたファイル情報
-    //$file = $_FILES['file'];
-
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'postimg/';
+            $fileName = basename($_FILES['file']['name']);
+            $uploadFile = $uploadDir . $fileName;
+    
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
+                echo "ファイルがアップロードされました: $uploadFile";
+            } else {
+                echo "ファイルのアップロードに失敗しました。";
+            }
+        } else {
+            echo "ファイルが選択されていないか、エラーが発生しました。";
+        }
+    }
 }
-?>
+    ?>
+
