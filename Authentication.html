@@ -1,69 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="css/master.css">
-    <!-- FirebaseのJavaScript SDKを読み込む -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+  <!-- Firebase SDK (モジュール形式) を読み込む -->
+  <script type="module">
+    // Firebaseモジュールを個別にインポートする
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js';
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js';
 
-    <!-- Firebaseの設定 -->
-    <script>
-        // Firebaseの設定
-        const firebaseConfig = {
-            apiKey: "AIzaSyCd54FD0kGdr-tgP67nKPxQqeRHrjDueQo",
-            authDomain: "authentication1-f4741.firebaseapp.com",
-            projectId: "authentication1-f4741",
-            storageBucket: "authentication1-f4741.firebasestorage.app",
-            messagingSenderId: "892161235655",
-            appId: "1:892161235655:web:d5cbbebe90baec24ddfce2",
-            measurementId: "G-Z7P7HKJMRM"
-        };
+    // Firebaseの設定情報
+    const firebaseConfig = {
+      apiKey: "AIzaSyC2qOcRheGYGvtWtQLWCLZmzKYqatuyS20",
+      authDomain: "authentication2-cb1e0.firebaseapp.com",
+      projectId: "authentication2-cb1e0",
+      storageBucket: "authentication2-cb1e0.firebasestorage.app",
+      messagingSenderId: "449563771119",
+      appId: "1:449563771119:web:d6d41164844c7c8dc99b1a",
+      measurementId: "G-9LLZSCFS0H"
+    };
 
-        // Firebaseを初期化
-        firebase.initializeApp(firebaseConfig);
+    // Firebaseの初期化
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-        // Firebase Authenticationを初期化
-        const auth = firebase.auth();
+    // UI要素の取得
+    const loginButton = document.getElementById("loginButton");
+    const logoutButton = document.getElementById("logoutButton");
+    const userInfoDiv = document.getElementById("userInfo");
 
-        // Google認証プロバイダを追加
-        const provider = new firebase.auth.GoogleAuthProvider();
+    // Googleログインの処理
+    loginButton.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        userInfoDiv.innerHTML = `ログインユーザー: ${user.displayName} (${user.email})`;
+        loginButton.style.display = "none";
+        logoutButton.style.display = "inline-block";
+      } catch (error) {
+        console.error("ログインエラー:", error);
+      }
+    });
 
-        // ログインボタン
-        document.addEventListener('DOMContentLoaded', function() {
-          const loginButton = document.getElementById('login-button');
-          loginButton.addEventListener('click', () => {
-            auth.signInWithPopup(provider)
-                .then((result) => {
-                    const user = result.user;
-                    console.log('ログイン成功:', user);
-                })
-                .catch((error) => {
-                    console.error('ログイン失敗:', error);
-                });
-          });
+    // ログアウトの処理
+    logoutButton.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        userInfoDiv.innerHTML = "";
+        loginButton.style.display = "inline-block";
+        logoutButton.style.display = "none";
+      } catch (error) {
+        console.error("ログアウトエラー:", error);
+      }
+    });
+  </script>
 
-          // ログアウトボタン
-          const logoutButton = document.getElementById('logout-button');
-          logoutButton.addEventListener('click', () => {
-            auth.signOut()
-                .then(() => {
-                    console.log('ログアウト成功');
-                })
-                .catch((error) => {
-                    console.error('ログアウト失敗:', error);
-                });
-          });
-        });
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Login with Firebase</title>
 </head>
 <body>
-    <!-- ログインボタン -->
-    <button id="login-button">Googleアカウントでログイン</button>
-
-    <!-- ログアウトボタン -->
-    <button id="logout-button">ログアウト</button>
-
-    <!-- ページのコンテンツ -->
+  <h1>Google Login with Firebase</h1>
+  <button id="loginButton">Googleでログイン</button>
+  <button id="logoutButton" style="display: none;">ログアウト</button>
+  <div id="userInfo" style="margin-top: 20px;"></div>
 </body>
 </html>
