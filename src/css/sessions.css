@@ -11,35 +11,17 @@ header {
 footer {
     text-align: center;
 }
-.search-title {
-    padding: 3vw;
-}
 .contents {
     padding: 3vh;
 }
 .logosize {
     font-size: 3vw;
 }
-.search_container{
-    background: #D9D9D9;
-    box-sizing: border-box;
-    padding: 1vh 2vh;
-    border-radius: 1vh;
+.login-urge-box {
+    text-align: center;
 }
-.search_container input[type="text"]{
-    border: none;
-    height: 5vh;
-}
-.search_container input[type="text"]:focus {
-    outline: 0;
-}
-.search_container input[type="text"]{
-    border: none;
-    height: 5vh;
-}
-.search-button{
-    margin-left: 0.5vw;
-    color: #000000;
+.login-urge {
+    margin: 5vh 0vh;
 }
 .post {
     display: flex;
@@ -66,8 +48,8 @@ footer {
 }
 
 .postimg {
-    width: 18vw;
-	height: 18vw;
+    width: 12vw;
+	height: 12vw;
 	object-fit: cover;
     border-radius: 1vw;
 }
@@ -75,6 +57,21 @@ footer {
 .post-title {
     margin-bottom: 2vh;
     font-weight: bold;
+}
+
+.post-text {
+    vertical-align: middle;
+}
+
+.browser-name {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.browser-name-item {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .postdata-table {
@@ -111,4 +108,12 @@ footer {
     padding: 12px 20px;
     border-radius: 1vh;
     background-color: #D9D9D9;
+}
+
+.page-title {
+    color: #ffffff;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 5vw;
 }

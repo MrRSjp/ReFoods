@@ -11,35 +11,17 @@ header {
 footer {
     text-align: center;
 }
-.search-title {
-    padding: 3vw;
-}
 .contents {
     padding: 3vh;
 }
 .logosize {
     font-size: 3vw;
 }
-.search_container{
-    background: #D9D9D9;
-    box-sizing: border-box;
-    padding: 1vh 2vh;
-    border-radius: 1vh;
+.login-urge-box {
+    text-align: center;
 }
-.search_container input[type="text"]{
-    border: none;
-    height: 5vh;
-}
-.search_container input[type="text"]:focus {
-    outline: 0;
-}
-.search_container input[type="text"]{
-    border: none;
-    height: 5vh;
-}
-.search-button{
-    margin-left: 0.5vw;
-    color: #000000;
+.login-urge {
+    margin: 5vh 0vh;
 }
 .post {
     display: flex;
@@ -59,10 +41,6 @@ footer {
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-}
-.buy-box {
-    height: auto;
-    align-items: flex-end;
 }
 
 .postimg {
@@ -89,18 +67,7 @@ footer {
     color: #ffffff;
     background-color: #000000;
 }
-#post-page-button {
-    position: fixed; /* 要素の位置を固定する */
-    bottom: 5%; /* 基準の位置を画面の一番下に指定する */
-    right: 2.5%; /* 基準の位置を画面の一番右に指定する */
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #000000;
-    opacity: 0.7;
-    padding: 10px 20px;
-    border-radius: 1vh;
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.35);
-}
+
 #post-orderby {
     background-color: #D9D9D9;
     padding: 8px 10px;
@@ -111,4 +78,12 @@ footer {
     padding: 12px 20px;
     border-radius: 1vh;
     background-color: #D9D9D9;
+}
+
+.page-title {
+    color: #ffffff;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 5vw;
 }

@@ -1,0 +1,72 @@
+header {
+    padding: 3vh;
+    position: static;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+footer {
+    text-align: center;
+}
+.contents {
+    height: 100%;
+    text-align: center;
+    padding: 3vh;
+}
+.logosize {
+    font-size: 3vw;
+}
+
+.black-button {
+    padding: 12px 20px;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.login-urge-box {
+    text-align: center;
+}
+
+.login-urge {
+    margin: 5vh 0vh;
+}
+
+.page-title {
+    color: #ffffff;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 5vw;
+}
+
+.useredit-form {
+    display:inline-block;
+    margin-top: 10vh;
+}
+
+.useredit-table {
+    border-collapse:separate;
+    border-spacing: 1vw;
+}
+
+.useredit-table-th {
+    font-size: 1.5vw;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.useredit-table-td {
+    font-size: 1.5vw;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.textform {
+    padding: 0.5vw;
+    background-color: #E5E5EA;
+    border-radius: 0.5vw;
+}

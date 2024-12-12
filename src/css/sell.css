@@ -1,0 +1,113 @@
+header {
+    padding: 3vh;
+    position: static;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+footer {
+    text-align: center;
+}
+.contents {
+    padding: 3vh;
+}
+.logosize {
+    font-size: 3vw;
+}
+.black-button {
+    padding: 12px 20px;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.login-urge-box {
+    text-align: center;
+}
+
+.login-urge {
+    margin: 5vh 0vh;
+}
+
+.post {
+    align-items: center;
+    padding: 1vw;
+}
+
+.data-box {
+    display: flex;
+    align-items: center;
+}
+
+.postimg-box {
+    margin-right: 3vw;
+}
+
+.postimg {
+    width: 18vw;
+	height: 18vw;
+	object-fit: cover;
+    border-radius: 1vw;
+}
+
+.postdata-box {
+    height: 100%;
+}
+
+.post-title {
+    font-size: 4vh;
+    margin-bottom: 2vh;
+    font-weight: bold;
+}
+
+.post-text {
+    font-size: 3vh;
+    margin: 2vh 0vh;
+}
+
+.editing-button {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1.3vw;
+    padding: 0.6vw;
+    border-radius: 0.5vw;
+    margin-right: 0.5vw;
+}
+
+.grayout-button {
+    display: inline-block;
+    background-color: #808080;
+    color: #ffffff;
+    font-size: 1.3vw;
+    padding: 0.6vw;
+    border-radius: 0.5vw;
+    margin-right: 0.5vw;
+}
+
+.grayout-text {
+    display: inline-block;
+    color: #ff0000;
+}
+
+#post-orderby {
+    background-color: #D9D9D9;
+    padding: 8px 10px;
+    border-radius: 1vh;
+}
+
+.orderby-update {
+    padding: 12px 20px;
+    border-radius: 1vh;
+    background-color: #D9D9D9;
+}
+.page-title {
+    color: #ffffff;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 5vw;
+}
