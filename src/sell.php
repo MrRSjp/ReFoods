@@ -85,13 +85,13 @@
                                     if((int) $date->days <= 7):?>
                                         <!-- <p class="editing-button"><a>売却取消</a></p> -->
                                     <?php endif;?>
-                                    <p class="editing-button"><a>売却取消</a></p>
+                                    <form method="post" action="pg/sell-cancel.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="売却取消" class="editing-button"></form>
                                     <p class="grayout-button"><a>編集</a></p>
                                     <p class="grayout-button"><a>削除</a></p>
                                     <p class="grayout-text">既に購入済みの為、編集や削除はできません。</p>
                                 <?php else:?>
                                     <p class="editing-button"><a>編集</a></p>
-                                    <p class="editing-button"><a>削除</a></p>
+                                    <form method="post" action="pg/post-delete.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="削除" class="editing-button"></form>
                                 <?php endif;?>
                             </div>
                         </div>

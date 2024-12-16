@@ -98,7 +98,9 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="buy-box"><button class="black-button">購入取消</button></div>
+                        <div class="buy-box">
+                        <form method="post" action="pg/buy-cancel.php"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="購入取消" class="black-button"></form>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php } else { ?>

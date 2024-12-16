@@ -68,6 +68,10 @@ footer {
     margin: 2vh 0vh;
 }
 
+.postform {
+    display: inline-block;
+}
+
 .editing-button {
     display: inline-block;
     background-color: #000000;

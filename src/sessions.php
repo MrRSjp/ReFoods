@@ -116,7 +116,9 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="buy-box"><button class="black-button">このセッションをログアウトする</button></div>
+                        <div class="buy-box">
+                            <form method="post" action="pg/session-logout.php"><input type="hidden" name="id" value="<?php echo $post['id'] ?>"><input type="submit" value="このセッションをログアウトする" class="black-button"></form>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php } else { ?>
