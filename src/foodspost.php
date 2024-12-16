@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // データベースに保存
-    // if(!empty($name) && !empty($location) && !empty($amount) && !empty($price) &&!empty($expiration_date) && !empty($email) && !empty($url)) {// 必須フィールドを確認
+     //if(!empty($name) && !empty($location) && !empty($amount) && !empty($price) &&!empty($expiration_date) && !empty($email) && !empty($url)) {// 必須フィールドを確認
 
-    if(!empty($name)){
+    if(!empty($location)){
         $stmt = $dbw->prepare('INSERT INTO posts (name, location, amount, price, expiration_date, email, img_url) VALUES ("'.$name.'","'.$location.'",'.$amount.','.$price.',"'.$expiration_date.'","'.$email.'","'.$url.'")' );
        echo 'INSERT INTO posts (name, location, amount, price, expiration_date, email, url) VALUES ("'.$name.'","'.$location.'",'.$amount.','.$price.',"'.$expiration_date.'","'.$email.'","'.$url.'")'; 
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: ./index.php');
             exit;
         } else {
-             echo 'データ保存に失敗しました: ' ; $stmt->error;
+             echo 'データ保存に失敗しました: ' ; 
         }
     } else {
         echo '全てのフィールドを入力してください。';
