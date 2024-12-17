@@ -37,7 +37,7 @@
                                     <td class="username"><p><?php echo htmlspecialchars($userdata['name'], ENT_QUOTES); ?> さん</p></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><button class="black-button">ログアウト</button></td>
+                                    <td colspan="2"><a href="pg/logout.php"><button class="black-button">ログアウト</button></a></td>
                                 </tr>
                             </tbody>
                         </table>

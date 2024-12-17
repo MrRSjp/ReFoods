@@ -17,7 +17,7 @@ require('modules.php'); ?>
             $postdb = $dbw->prepare('SELECT * FROM posts WHERE id=' . $_POST['post_id']);
             $postdb -> execute();
             $postdata = $postdb -> fetch();
-            if(strcmp($postdata['poster_id'], $user_id) != 0) {
+            if(strcmp($postdata['poster_id'], $user_id) == 0) {
                 $db = $dbw->prepare('DELETE FROM posts WHERE id=' . $_POST['post_id']);
                 if ($db->execute()) {
                     // データ保存成功後に画面遷移

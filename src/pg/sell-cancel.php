@@ -17,8 +17,8 @@ require('modules.php'); ?>
             $postdb = $dbw->prepare('SELECT * FROM posts WHERE id=' . $_POST['post_id']);
             $postdb -> execute();
             $postdata = $postdb -> fetch();
-            if(strcmp($postdata['poster_id'], $user_id) != 0) {
-                $db = $dbw->prepare('UPDATE posts SET purchaser_id="", is_purchased=0 WHERE id=' . $_POST['post_id']);
+            if(strcmp($postdata['poster_id'], $user_id) == 0) {
+                $db = $dbw->prepare('UPDATE posts SET purchaser_id=NULL, buy_date=NULL, is_purchased=0 WHERE id=' . $_POST['post_id']);
                 if ($db->execute()) {
                     $selluserdb = $dbw->prepare('SELECT * FROM users WHERE id=' . $postdata['poster_id']);
                     $selluserdb -> execute();
