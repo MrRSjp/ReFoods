@@ -70,49 +70,57 @@
                     <?php 
                     $osname = "端末名不明";
                     $browsername = "不明";
-                    if((int) $post['login_os'] == 0) {
-                        $osname = "端末名不明";
-                    } elseif ((int) $post['login_os'] == 1) {
+                    if((int) $post['device_num'] == 0) {
+                        if(isset($post['platform_name'])) {
+                            $osname = $post['platform_name'];
+                        } else {
+                            $osname = "端末名不明";
+                        }
+                    } elseif ((int) $post['device_num'] == 1) {
                         $osname = "Windows";
-                    } elseif ((int) $post['login_os'] == 2) {
+                    } elseif ((int) $post['device_num'] == 2) {
                         $osname = "MacOS";
-                    } elseif ((int) $post['login_os'] == 3) {
+                    } elseif ((int) $post['device_num'] == 3) {
+                        $osname = "Linux";
+                    } elseif ((int) $post['device_num'] == 4) {
                         $osname = "Android";
-                    } elseif ((int) $post['login_os'] == 4) {
+                    } elseif ((int) $post['device_num'] == 5) {
                         $osname = "iPhone";
+                    } elseif ((int) $post['device_num'] == 6) {
+                        $osname = "iPad";
+                    } elseif ((int) $post['device_num'] == 7) {
+                        $osname = "iPod";
                     }
 
-                    if((int) $post['user_agent'] == 0) {
+                    if((int) $post['browser_num'] == 0) {
                         $browsername = "不明";
-                    } elseif ((int) $post['user_agent'] == 1) {
+                    } elseif ((int) $post['browser_num'] == 1) {
                         $browsername = "Internet Explorer";
-                    } elseif ((int) $post['user_agent'] == 2) {
+                    } elseif ((int) $post['browser_num'] == 2) {
                         $browsername = "Edge";
-                    } elseif ((int) $post['user_agent'] == 3) {
+                    } elseif ((int) $post['browser_num'] == 3) {
                         $browsername = "Chrome";
-                    } elseif ((int) $post['user_agent'] == 4) {
+                    } elseif ((int) $post['browser_num'] == 4) {
                         $browsername = "Safari";
-                    } elseif ((int) $post['user_agent'] == 5) {
+                    } elseif ((int) $post['browser_num'] == 5) {
                         $browsername = "Firefox";
-                    } elseif ((int) $post['user_agent'] == 6) {
-                        $browsername = "Brave";
-                    } elseif ((int) $post['user_agent'] == 7) {
+                    } elseif ((int) $post['browser_num'] == 6) {
                         $browsername = "Opera";
                     }
                     ?>
                     <div class="post">
                         <div class="data-box">
                             <div class="postimg-box">
-                                <img class="postimg" src="icon/session/device<?php echo htmlspecialchars($post['login_os'], ENT_QUOTES); ?>.png" alt="<?php echo $osname; ?>" />
+                                <img class="postimg" src="icon/session/device<?php echo htmlspecialchars($post['device_num'], ENT_QUOTES); ?>.png" alt="<?php echo $osname; ?>" />
                             </div>
                             <div class="postdata-box">
                                 <p class="post-title"><?php echo $osname ?></p>
                                 <p class="post-text">ログイン場所：<?php echo htmlspecialchars($post['login_location'], ENT_QUOTES); ?></p>
                                 <p class="post-text">ログイン時間：<?php echo htmlspecialchars($post['login_date'], ENT_QUOTES); ?></p>
-                                <?php if((int) $post['user_agent'] == 0): ?>
+                                <?php if((int) $post['browser_num'] == 0): ?>
                                     <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                 <?php else: ?>
-                                    <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['user_agent'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                    <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                 <?php endif; ?>
                             </div>
                         </div>
