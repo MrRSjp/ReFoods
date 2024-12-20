@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Firebase SDK (モジュール形式) を読み込む -->
+  <script type="module">
+    // Firebaseモジュールを個別にインポートする
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js';
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js';
+
+    // Firebaseの設定情報
+    const firebaseConfig = {
+      apiKey: "AIzaSyC2qOcRheGYGvtWtQLWCLZmzKYqatuyS20",
+      authDomain: "authentication2-cb1e0.firebaseapp.com",
+      projectId: "authentication2-cb1e0",
+      storageBucket: "authentication2-cb1e0.firebasestorage.app",
+      messagingSenderId: "449563771119",
+      appId: "1:449563771119:web:d6d41164844c7c8dc99b1a",
+      measurementId: "G-9LLZSCFS0H"
+    };
+
+    // Firebaseの初期化
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // UI要素の取得
+    const loginButton = document.getElementById("loginButton");
+    const logoutButton = document.getElementById("logoutButton");
+    const userInfoDiv = document.getElementById("userInfo");
+
+    // Googleログインの処理
+    loginButton.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        userInfoDiv.innerHTML = `ログインユーザー: ${user.displayName} (${user.email})`;
+        loginButton.style.display = "none";
+        logoutButton.style.display = "inline-block";
+      } catch (error) {
+        console.error("ログインエラー:", error);
+      }
+    });
+
+    // ログアウトの処理
+    logoutButton.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        userInfoDiv.innerHTML = "";
+        loginButton.style.display = "inline-block";
+        logoutButton.style.display = "none";
+      } catch (error) {
+        console.error("ログアウトエラー:", error);
+      }
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Login with Firebase</title>
+</head>
+<body>
+  <h1>Google Login with Firebase</h1>
+  <button id="loginButton">Googleでログイン</button>
+  <button id="logoutButton" style="display: none;">ログアウト</button>
+  <div id="userInfo" style="margin-top: 20px;"></div>
+</body>
+</html>
