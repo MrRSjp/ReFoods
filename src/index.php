@@ -57,7 +57,7 @@
         <h1 class="search-title">「<?php echo htmlspecialchars($_GET["search"], ENT_QUOTES) ?>」の検索結果</h1>
     <?php endif; ?>
     <div class="contents">
-        <div id="post-page-button"><a href="#">投稿する</a></div>
+        <div id="post-page-button"><a href="foodspost.html">投稿する</a></div>
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 
         $max_post = 10;
