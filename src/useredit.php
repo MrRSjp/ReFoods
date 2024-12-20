@@ -15,9 +15,9 @@
         <?php 
         $logincheck = logincheck();
         if((int) $logincheck == 1): ?>
-        <a href="account.php"><button class="black-button">アカウント管理</button></a>
+            <a href="account.php"><button class="black-button">アカウント管理</button></a>
         <?php else: ?>
-        <button class="black-button">ログイン</button>
+            <a href="Authentication.html"><button class="black-button">ログイン</button></a>
         <?php endif; ?>
     </div>
 </header>
@@ -46,7 +46,7 @@
         <?php else: ?>
             <div class="login-urge-box">
                 <p class="login-urge">ログインしてください</p>
-                <button class="black-button">ログイン / 新規会員登録</button>
+                <a href="Authentication.html"><button class="black-button">ログイン / 新規会員登録</button></a>
             </div>
         <?php endif; ?>
     </div>

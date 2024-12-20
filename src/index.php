@@ -46,9 +46,9 @@
             </noscript>
         </form>
         <?php if((int) logincheck() == 1): ?>
-        <a href="account.php"><button class="black-button">アカウント管理</button></a>
+            <a href="account.php"><button class="black-button">アカウント管理</button></a>
         <?php else: ?>
-        <button class="black-button">ログイン</button>
+            <a href="Authentication.html"><button class="black-button">ログイン</button></a>
         <?php endif; ?>
     </div>
 </header>
