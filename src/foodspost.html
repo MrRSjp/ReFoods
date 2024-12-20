@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/master.css">
+    <title>投稿フォーム</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>投稿</h1>
+    <form action="foodspost.php" method="POST" enctype="multipart/form-data">
+        画像: <input type="file"  id="fileInput" name="file">
+        <img id = "img" style="max-width: 100%; height: auto;" name="file"><br/>
+        商品名: <br/><input type="text" name="name" required><br/>
+        場所: <br/><input type="text" name="location" required><br/>
+        量: <br/><input type="text" name="amount" required>kg<br/>
+        値段: <br/><input type="text" name="price" required>円<br/>
+        消費期限（日付）: <br/><input type="date" name="expiration_date" required><br/>
+        消費期限（時間）: <br/><input type="time" name="expiration_time"  required><br/>
+        メールアドレス: <br/><input type="email" name="email" required><br/>
+        <input type="submit" value="投稿">
+    </form>
+</body>
+</html>
