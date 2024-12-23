@@ -105,9 +105,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `fa_uid`, `name`, `address`, `latitude`, `longitude`, `user_img`, `is_oimg`) VALUES
-(1, NULL, NULL, NULL, '管理者', '愛知県名古屋市中村区名駅３丁目２４−１５', '35.172512', '136.886357', 'df/dfuserico.svg', 0),
-(2, NULL, NULL, NULL, 'テストユーザー', '愛知県名古屋市中村区名駅３丁目２４−１５', '35.172512', '136.886357', 'user2.png', 1),
-(3, NULL, NULL, NULL, 'テストユーザー２', '愛知県名古屋市中村区名駅３丁目２４−１５', '35.172512', '136.886357', 'user3.png', 1);
+(1, NULL, NULL, 'izz95uxh9kbx', '管理者', '愛知県名古屋市中村区名駅３丁目２４−１５', '35.172512', '136.886357', 'df/dfuserico.svg', 0),
+(2, NULL, NULL, '7jxg2akqdunw', 'テストユーザー', '愛知県名古屋市中村区名駅３丁目２４−１５', '35.172512', '136.886357', 'user2.png', 1),
+(3, NULL, NULL, 'stpka66jibzq', 'テストユーザー２', '愛知県名古屋市中村区名駅３丁目２４−１５', '35.172512', '136.886357', 'user3.png', 1);
 
 --
 -- ダンプしたテーブルのインデックス
