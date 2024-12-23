@@ -10,8 +10,8 @@ require('modules.php'); ?>
 </head>
 <body>
     <?php 
-    if ((int) logincheck() == 1) {
-        $buser_id = get_userid();
+    if ((int) logincheck_back() == 1) {
+        $buser_id = get_userid_back();
         if(strcmp($buser_id, "e") != 0 ) {
             $user_id = $buser_id;
             date_default_timezone_set('Asia/Tokyo');

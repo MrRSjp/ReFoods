@@ -120,7 +120,7 @@
                                     <?php if((int) $post['browser_num'] == 0): ?>
                                         <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                     <?php else: ?>
-                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.png" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                     <?php if((int) $post['browser_num'] == 0): ?>
                                         <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                     <?php else: ?>
-                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.png" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                     <?php endif; ?>
                                 </div>
                             </div>

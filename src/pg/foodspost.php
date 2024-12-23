@@ -3,8 +3,8 @@ require('../db/dbconnect-w.php'); // DB接続ファイル
 require('modules.php');
 session_start();
 
-if ((int) logincheck() == 1) {
-    $buser_id = get_userid();
+if ((int) logincheck_back() == 1) {
+    $buser_id = get_userid_back();
     if(strcmp($buser_id, "e") != 0 ) {
         $user_id = $buser_id;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -26,7 +26,6 @@ if ((int) logincheck() == 1) {
                 $expiration_datetime = $expiration_date . ' ' . $expiration_time;
 
                 $stmt = $dbw->prepare('INSERT INTO posts (id, name, location, amount, price, expiration_date, email, post_date, poster_id) VALUES (5,"'.$name.'","'.$location.'",'.$amount.','.$price.',"'.$expiration_datetime.'","'.$email.'","'.$post_date.'","' . $user_id . '")' );
-                echo 'INSERT INTO posts (name, location, amount, price, expiration_date, email, url) VALUES ("'.$name.'","'.$location.'",'.$amount.','.$price.',"'.$expiration_datetime.'","'.$email.'","'.$url.'")'; 
 
                 if ($stmt->execute()) {
                     $id = $dbw->lastInsertId();

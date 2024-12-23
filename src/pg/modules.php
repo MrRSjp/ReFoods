@@ -2,16 +2,22 @@
 function logincheck() {
     if (isset($_COOKIE["sid"])) {
         require('db/dbconnect-r.php');
-        $sid = $dbr->query('SELECT EXISTS(SELECT * FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '")');
+        $sid = $dbr->query('SELECT COUNT(id) FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '" LIMIT 1');
         $sid->execute();
-        $sida = $sid->fetch();
-        if(empty($sida)) {
+        $sida = $sid->fetchColumn();
+        if(isset($sida)) {
+            if(is_null($sida) || strcmp($sida, "") == 0) {
+                $sida = 0;
+            } else {
+                if((int) $sida == 0){
+                    setcookie('sid', '', time() - 3600, "/");
+                }
+            }
+        } else {
             $sida = 0;
         }
     } else {
         $sida = 0;
-        //テスト用に一定にログイン状態を返すよう記述しました。
-        // $sida = 1;
     }
     return $sida;
 }
@@ -22,15 +28,61 @@ function get_userid() {
         $sid = $dbr->query('SELECT * FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '"');
         $sid->execute();
         $sida = $sid->fetch();
-        if(empty($sida)) {
-            return "e";
+        if(isset($sida)) {
+            if(is_null($sida["user_id"]) || strcmp($sida["user_id"], "") == 0){
+                return "e";
+            } else {
+                return $sida["user_id"];
+            }
         } else {
-            return $sida["user_id"];
+            return "e";
         }
     } else {
-        // $sida = "e";
-        //テスト用に一定に特定ユーザIDを返すよう記述しました。
-        $sida = 2;
+        $sida = "e";
+        return $sida;
+    }
+}
+
+function logincheck_back() {
+    if (isset($_COOKIE["sid"])) {
+        require('../db/dbconnect-r.php');
+        $sid = $dbr->query('SELECT COUNT(id) FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '" LIMIT 1');
+        $sid->execute();
+        $sida = $sid->fetchColumn();
+        if(isset($sida)) {
+            if(is_null($sida) || strcmp($sida, "") == 0) {
+                $sida = 0;
+            } else {
+                if((int) $sida == 0){
+                    setcookie('sid', '', time() - 3600, "/");
+                }
+            }
+        } else {
+            $sida = 0;
+        }
+    } else {
+        $sida = 0;
+    }
+    return $sida;
+}
+
+function get_userid_back() {
+    if (isset($_COOKIE["sid"])) {
+        require('../db/dbconnect-r.php');
+        $sid = $dbr->query('SELECT * FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '"');
+        $sid->execute();
+        $sida = $sid->fetch();
+        if(isset($sida)) {
+            if(is_null($sida["user_id"]) || strcmp($sida["user_id"], "") == 0){
+                return "e";
+            } else {
+                return $sida["user_id"];
+            }
+        } else {
+            return "e";
+        }
+    } else {
+        $sida = "e";
         return $sida;
     }
 }
@@ -43,7 +95,7 @@ function sql_escape($txt) {
 }
 
 /* getIp()関数に関しては下記サイトから拝借しました。ありがとうございます！
-URL: https://ja.php.brj.cz/php-deyuzano-ip-adoresuwo-qu-desuru*/
+URL: https://ja.php.brj.cz/php-deyuzano-ip-adoresuwo-qu-desuru */
 
 function getIp(): string {
     if (isset($_SERVER['http_cf_connecting_ip'])) { // Cloudflare対応

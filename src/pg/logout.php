@@ -10,7 +10,7 @@ require('modules.php'); ?>
 </head>
 <body>
     <?php 
-    if ((int) logincheck() == 1) {
+    if ((int) logincheck_back() == 1) {
         if (isset($_COOKIE["sid"])) {
             $db = $dbw->prepare('DELETE FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '"');
             if ($db->execute()) {

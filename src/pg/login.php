@@ -12,9 +12,10 @@ use GeoIp2\Database\Reader; ?>
 </head>
 <body>
     <?php 
-    if ((int) logincheck() == 1) {
+    if ((int) logincheck_back() == 0) {
+        echo "a";
         /* 新規ユーザーか判定（新規であればユーザーデータベースに新規追加） */
-        $existenceCheck = $dbw->query('SELECT EXISTS(SELECT * FROM users WHERE fa_uid="' . $_POST['fa_uid'] . '")');
+        $existenceCheck = $dbw->query('SELECT COUNT(id) FROM users WHERE fa_uid="' . $_POST['fa_uid'] . '" LIMIT 1');
         $existenceCheck->execute();
         $existenceCheckData = $existenceCheck->fetchColumn();
         if((int) $existenceCheckData == 0) {
@@ -31,14 +32,13 @@ use GeoIp2\Database\Reader; ?>
         /* セッション新規追加 */
         $bsid = uniqid('rfs_');
         $sidtf = 0;
-        while((int) $sidtf != 1) {
-            $sid = $dbw->query('SELECT EXISTS(SELECT * FROM sessions WHERE session_id="' . $bsid . '")');
+        while((int) $sidtf != 0) {
+            $sid = $dbw->query('SELECT COUNT(id) FROM sessions WHERE session_id="' . $bsid . '" LIMIT 1');
             $sid->execute();
-            $sida = $sid->fetch();
+            $sida = $sid->fetchColumn();
             $sidtf = $sida;
         }
         $sid = $bsid;
-        setcookie('sid', $sid);
         date_default_timezone_set('Asia/Tokyo');
         $nowdate = date("Y-m-d H:i:s");
 
