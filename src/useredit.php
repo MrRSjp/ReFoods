@@ -27,7 +27,7 @@
     </div>
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
-        <?php if ($logincheck == 1):?>
+        <?php if ((int) $logincheck == 1):?>
             <form action="pg/user-update.php" method="post" enctype="multipart/form-data" class="useredit-form">
                 <table class="useredit-table">
                     <tbody>

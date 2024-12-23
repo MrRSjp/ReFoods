@@ -39,7 +39,7 @@
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 
-        if ($logincheck == 1) {
+        if ((int) $logincheck == 1) {
             $max_post = 10;
 
             if (isset($_REQUEST['page']) && is_numeric($_REQUEST['page'])) {

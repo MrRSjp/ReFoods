@@ -5,10 +5,13 @@ function logincheck() {
         $sid = $dbr->query('SELECT EXISTS(SELECT * FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '")');
         $sid->execute();
         $sida = $sid->fetch();
+        if(empty($sida)) {
+            $sida = 0;
+        }
     } else {
-        // $sida = 0;
+        $sida = 0;
         //テスト用に一定にログイン状態を返すよう記述しました。
-        $sida = 1;
+        // $sida = 1;
     }
     return $sida;
 }
@@ -19,7 +22,11 @@ function get_userid() {
         $sid = $dbr->query('SELECT * FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '"');
         $sid->execute();
         $sida = $sid->fetch();
-        return $sida["user_id"];
+        if(empty($sida)) {
+            return "e";
+        } else {
+            return $sida["user_id"];
+        }
     } else {
         // $sida = "e";
         //テスト用に一定に特定ユーザIDを返すよう記述しました。
@@ -53,7 +60,7 @@ function getIp(): string {
     } else {
         $ip = '127.0.0.1';
     }
-    if (in_array($ip, ['::1', '0.0.0.0', 'ローカルホスト'], true)) {
+    if (in_array($ip, ['::1', '0.0.0.0', 'ローカルホスト', 'localhost'], true)) {
         $ip = '127.0.0.1';
     }
     $filter = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);

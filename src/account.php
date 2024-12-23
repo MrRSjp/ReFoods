@@ -21,7 +21,7 @@
 </header>
 <body>
     <div class="contents">
-        <?php if ($logincheck == 1) {
+        <?php if ((int) $logincheck == 1) {
             $buser_id = get_userid();
             if(strcmp($buser_id, "e") != 0 ) {
                 $user_id = $buser_id;

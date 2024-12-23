@@ -1,7 +1,7 @@
 <?php 
 require('../db/dbconnect-w.php');
 require('modules.php');
-require_once("phpip/vendor/autoload.php");
+require_once("../phpip/vendor/autoload.php");
 use GeoIp2\Database\Reader; ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -16,8 +16,8 @@ use GeoIp2\Database\Reader; ?>
         /* 新規ユーザーか判定（新規であればユーザーデータベースに新規追加） */
         $existenceCheck = $dbw->query('SELECT EXISTS(SELECT * FROM users WHERE fa_uid="' . $_POST['fa_uid'] . '")');
         $existenceCheck->execute();
-        $existenceCheckData = $existenceCheck->fetch();
-        if($existenceCheckData == 0) {
+        $existenceCheckData = $existenceCheck->fetchColumn();
+        if((int) $existenceCheckData == 0) {
             $existenceCheck = $dbw->query('INSERT INTO users (email, fa_uid, name) VALUES ("' . $_POST['email'] . '", "' . $_POST['fa_uid'] . '", "' . $_POST['name'] . '")');
             $existenceCheck->execute();
             $userid = $dbw->lastInsertId();
@@ -43,7 +43,7 @@ use GeoIp2\Database\Reader; ?>
         $nowdate = date("Y-m-d H:i:s");
 
         // ipアドレスから位置判定
-        $reader = new Reader('phpip/db/GeoLite2-City.mmdb', array('ja'));
+        $reader = new Reader('../phpip/db/GeoLite2-City.mmdb', array('ja'));
         $ip_address = getIp();
         if(strcmp($ip_address, "127.0.0.1") == 0 ) {
             $location = "";
@@ -75,17 +75,17 @@ use GeoIp2\Database\Reader; ?>
             $device = 0;
         }
 
-        if (strstr($ua, 'edge')) {
+        if (strstr($ua, 'Edge') || strstr($ua, 'Edg')) {
             $browser = 2;
-        } elseif (strstr($ua, 'opera')){
+        } elseif (strstr($ua, 'Opera')){
             $browser = 6;
-        } elseif (strstr($ua, 'chrome')) {
+        } elseif (strstr($ua, 'Chrome')) {
             $browser = 3;
-        } elseif (strstr($ua, 'safari')) {
+        } elseif (strstr($ua, 'Safari')) {
             $browser = 4;
-        } elseif (strstr($ua, 'trident') || strstr($ua, 'msie')) {
+        } elseif (strstr($ua, 'Trident') || strstr($ua, 'MSIE')) {
             $browser = 1;
-        } elseif (strstr($ua, 'firefox')) {
+        } elseif (strstr($ua, 'Firefox')) {
             $browser = 5;
         } else {
             $browser = 0;
@@ -93,9 +93,9 @@ use GeoIp2\Database\Reader; ?>
 
         preg_match("/\(([^;]+)/", $ua,$platform_name);
         
-        $db = $dbw->prepare('INSERT INTO users (session_id, user_id, login_date, device_num, browser_num, platform_name, ip_address, login_location) VALUES ("' . $sid . '", "' . $userid . '", "' . $nowdate . '", "' . $device . '", "' . $browser . '", "' . $platform_name[1] . '", "' . $ip_address . '", "' . $location . '")');
+        $db = $dbw->prepare('INSERT INTO sessions (session_id, user_id, login_date, device_num, browser_num, platform_name, ip_address, login_location) VALUES ("' . $sid . '", "' . $userid . '", "' . $nowdate . '", "' . $device . '", "' . $browser . '", "' . $platform_name[1] . '", "' . $ip_address . '", "' . $location . '")');
         if ($db->execute()) {
-            setcookie('sid', $sid);
+            setcookie('sid', $sid, 2147483647, "/");
             // データ保存成功後に画面遷移
             header('Location: ../index.php');
             exit;

@@ -14,7 +14,7 @@ require('modules.php'); ?>
         if (isset($_COOKIE["sid"])) {
             $db = $dbw->prepare('DELETE FROM sessions WHERE session_id="' . $_COOKIE["sid"] . '"');
             if ($db->execute()) {
-                setcookie('sid', '');
+                setcookie('sid', '', time() - 3600, "/");
                 // データ保存成功後に画面遷移
                 header('Location: ../index.php');
                 exit;

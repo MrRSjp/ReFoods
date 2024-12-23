@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <!-- Firebase SDK (モジュール形式) を読み込む -->
   <script type="module">
@@ -33,9 +33,38 @@
       try {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
-        userInfoDiv.innerHTML = `ログインユーザー: ${user.displayName} (${user.email})`;
-        loginButton.style.display = "none";
-        logoutButton.style.display = "inline-block";
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'pg/login.php';
+        const nameStr = user.displayName;
+        const uidStr = user.uid;
+        const emailStr = user.email;
+
+
+        if (nameStr.length != 0 && uidStr.length != 0 && emailStr.length != 0) {
+          const emailField = document.createElement('input');
+          emailField.type = 'hidden';
+          emailField.name = 'email';
+          emailField.value = emailStr;
+
+          const fauidField = document.createElement('input');
+          fauidField.type = 'hidden';
+          fauidField.name = 'fa_uid';
+          fauidField.value = uidStr;
+
+          const nameField = document.createElement('input');
+          nameField.type = 'hidden';
+          nameField.name = 'name';
+          nameField.value = nameStr;
+
+          form.appendChild(emailField);
+          form.appendChild(fauidField);
+          form.appendChild(nameField);
+        }
+
+        document.body.appendChild(form);
+        form.submit();
       } catch (error) {
         console.error("ログインエラー:", error);
       }

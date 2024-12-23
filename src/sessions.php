@@ -39,7 +39,7 @@
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 
-        if ($logincheck == 1) {
+        if ((int) $logincheck == 1) {
             $max_post = 10;
 
             if (isset($_REQUEST['page']) && is_numeric($_REQUEST['page'])) {
@@ -107,27 +107,49 @@
                     } elseif ((int) $post['browser_num'] == 6) {
                         $browsername = "Opera";
                     }
-                    ?>
-                    <div class="post">
-                        <div class="data-box">
-                            <div class="postimg-box">
-                                <img class="postimg" src="icon/session/device<?php echo htmlspecialchars($post['device_num'], ENT_QUOTES); ?>.png" alt="<?php echo $osname; ?>" />
+                    if(strcmp($post['session_id'], $_COOKIE["sid"]) == 0): ?>
+                        <div class="post">
+                            <div class="data-box">
+                                <div class="postimg-box">
+                                    <img class="postimg" src="icon/session/device<?php echo htmlspecialchars($post['device_num'], ENT_QUOTES); ?>.png" alt="<?php echo $osname; ?>" />
+                                </div>
+                                <div class="postdata-box">
+                                    <p class="post-title"><?php echo $osname ?></p>
+                                    <p class="post-text">ログイン場所：<?php echo htmlspecialchars($post['login_location'], ENT_QUOTES); ?></p>
+                                    <p class="post-text">ログイン時間：<?php echo htmlspecialchars($post['login_date'], ENT_QUOTES); ?></p>
+                                    <?php if((int) $post['browser_num'] == 0): ?>
+                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                    <?php else: ?>
+                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                            <div class="postdata-box">
-                                <p class="post-title"><?php echo $osname ?></p>
-                                <p class="post-text">ログイン場所：<?php echo htmlspecialchars($post['login_location'], ENT_QUOTES); ?></p>
-                                <p class="post-text">ログイン時間：<?php echo htmlspecialchars($post['login_date'], ENT_QUOTES); ?></p>
-                                <?php if((int) $post['browser_num'] == 0): ?>
-                                    <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><p class="browser-name-item"><?php echo $browsername; ?></p></p>
-                                <?php else: ?>
-                                    <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
-                                <?php endif; ?>
+                            <div class="buy-box">
+                                <div class="blackout-button">現在のセッション</div>
                             </div>
                         </div>
-                        <div class="buy-box">
-                            <form method="post" action="pg/session-logout.php"><input type="hidden" name="id" value="<?php echo $post['id'] ?>"><input type="submit" value="このセッションをログアウトする" class="black-button"></form>
+                    <?php else: ?>
+                        <div class="post">
+                            <div class="data-box">
+                                <div class="postimg-box">
+                                    <img class="postimg" src="icon/session/device<?php echo htmlspecialchars($post['device_num'], ENT_QUOTES); ?>.png" alt="<?php echo $osname; ?>" />
+                                </div>
+                                <div class="postdata-box">
+                                    <p class="post-title"><?php echo $osname ?></p>
+                                    <p class="post-text">ログイン場所：<?php echo htmlspecialchars($post['login_location'], ENT_QUOTES); ?></p>
+                                    <p class="post-text">ログイン時間：<?php echo htmlspecialchars($post['login_date'], ENT_QUOTES); ?></p>
+                                    <?php if((int) $post['browser_num'] == 0): ?>
+                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                    <?php else: ?>
+                                        <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.svg" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="buy-box">
+                                <form method="post" action="pg/session-logout.php"><input type="hidden" name="id" value="<?php echo $post['id'] ?>"><input type="submit" value="このセッションをログアウトする" class="black-button"></form>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             <?php } else { ?>
                 <div class="login-urge-box">

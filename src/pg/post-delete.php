@@ -20,9 +20,13 @@ require('modules.php'); ?>
             if(strcmp($postdata['poster_id'], $user_id) == 0) {
                 $db = $dbw->prepare('DELETE FROM posts WHERE id=' . $_POST['post_id']);
                 if ($db->execute()) {
-                    // データ保存成功後に画面遷移
-                    header('Location: ../sell.php');
-                    exit;
+                    if(unlink("../postimg/". $postdata['img_url'])) {
+                        // データ保存成功後に画面遷移
+                        header('Location: ../sell.php');
+                        exit;
+                    } else { ?>
+                        <p>データ保存に失敗しました</p>
+                    <?php }
                 } else { ?>
                      <p>データ保存に失敗しました</p>
                 <?php }

@@ -17,6 +17,7 @@ require('modules.php'); ?>
             $sessionsdb = $dbw->prepare('SELECT * FROM sessions WHERE id=' . $_POST['id']);
             $sessionsdb -> execute();
             $sessiondata = $sessionsdb -> fetch();
+            echo $user_id;
             if(strcmp($sessiondata['user_id'], $user_id) == 0) {
                 $db = $dbw->prepare('DELETE FROM sessions WHERE id=' . $_POST['id']);
                 if ($db->execute()) {

@@ -86,6 +86,13 @@ footer {
     color: #ffffff;
     background-color: #000000;
 }
+.blackout-button {
+    padding: 12px 20px;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #808080;
+}
 #post-page-button {
     position: fixed; /* 要素の位置を固定する */
     bottom: 5%; /* 基準の位置を画面の一番下に指定する */
