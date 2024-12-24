@@ -19,7 +19,7 @@ use GeoIp2\Database\Reader; ?>
         $existenceCheck->execute();
         $existenceCheckData = $existenceCheck->fetchColumn();
         if((int) $existenceCheckData == 0) {
-            $existenceCheck = $dbw->query('INSERT INTO users (email, fa_uid, name) VALUES ("' . $_POST['email'] . '", "' . $_POST['fa_uid'] . '", "' . $_POST['name'] . '")');
+            $existenceCheck = $dbw->query('INSERT INTO users (email, fa_uid, name, user_img) VALUES ("' . $_POST['email'] . '", "' . $_POST['fa_uid'] . '", "' . $_POST['name'] . '", "df/dfuserico.svg")');
             $existenceCheck->execute();
             $userid = $dbw->lastInsertId();
         } else {
