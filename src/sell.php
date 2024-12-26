@@ -5,6 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ReFoods" />
+    <link rel="manifest" href="/favicon/manifest.json" />
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('pg/sw.js').then(registration => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+        console.log('ServiceWorker registration failed: ', err);
+        }).catch(err => {
+        console.log(err)
+        });
+        });
+    }
+    </script>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/sell.css">
     <title>出品した商品 | ReFoods.</title>
@@ -116,7 +135,7 @@
         <?php if(strcmp($buser_id, "e") != 0 ): ?>
             <div>
                 <?php if ($page >= 2): ?>
-                    <a href="sell.php?page=<?php print($page-1); ?>">前へ</a>
+                    <a class="pagination-button" href="sell.php?page=<?php print($page-1); ?>">前へ</a>
                 <?php endif; ?>
                 <a><?php echo $page ?>ページ目</a>
                 <?php
@@ -124,7 +143,7 @@
                 $count = $counts->fetch();
                 $max_page = ceil($count['cnt'] / $max_post);
                 if ($page < $max_page): ?>
-                    <a href="sell.php?page=<?php print($page+1); ?>">次へ</a>
+                    <a class="pagination-button" href="sell.php?page=<?php print($page+1); ?>">次へ</a>
                 <?php endif; ?>
             </div>
         <?php endif;?>

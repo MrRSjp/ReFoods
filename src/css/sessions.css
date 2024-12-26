@@ -9,6 +9,7 @@ header {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 footer {
+    padding: 5vh;
     text-align: center;
 }
 .contents {
@@ -123,4 +124,12 @@ footer {
     background: -webkit-linear-gradient(to right, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 5vw;
+}
+.pagination-button {
+    padding: 0.5vw;
+    margin: 0vw 1vw;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
 }

@@ -5,6 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ReFoods" />
+    <link rel="manifest" href="/favicon/manifest.json" />
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('pg/sw.js').then(registration => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+        console.log('ServiceWorker registration failed: ', err);
+        }).catch(err => {
+        console.log(err)
+        });
+        });
+    }
+    </script>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/sessions.css">
     <title>有効なログイン済端末の管理 | ReFoods.</title>
@@ -12,7 +31,7 @@
 <header>
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
     <div>
-        <form method="get" action="buy.php" class="orderby-form">
+        <form method="get" action="sessions.php" class="orderby-form">
             <select name="orderby" id="post-orderby">
                 <option value="" select>表示順</option>
                 <option value="new">新しい順</option>
@@ -170,7 +189,7 @@
         <?php if(strcmp($buser_id, "e") != 0 ): ?>
             <div>
                 <?php if ($page >= 2): ?>
-                    <a href="index.php?page=<?php print($page-1); ?>">前へ</a>
+                    <a class="pagination-button" href="sessions.php?page=<?php print($page-1); ?>">前へ</a>
                 <?php endif; ?>
                 <a><?php echo $page ?>ページ目</a>
                 <?php
@@ -178,7 +197,7 @@
                 $count = $counts->fetch();
                 $max_page = ceil($count['cnt'] / $max_post);
                 if ($page < $max_page): ?>
-                    <a href="index.php?page=<?php print($page+1); ?>">次へ</a>
+                    <a class="pagination-button" href="sessions.php?page=<?php print($page+1); ?>">次へ</a>
                 <?php endif; ?>
             </div>
         <?php endif;?>

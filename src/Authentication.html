@@ -85,11 +85,44 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Login with Firebase</title>
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="ReFoods" />
+  <link rel="manifest" href="/favicon/manifest.json" />
+  <script>
+  if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+      navigator.serviceWorker.register('pg/sw.js').then(registration => {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, err => {
+      console.log('ServiceWorker registration failed: ', err);
+      }).catch(err => {
+      console.log(err)
+      });
+      });
+  }
+  </script>
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <title>ログイン | ReFoods.</title>
 </head>
 <body>
-  <h1>Google Login with Firebase</h1>
-  <button id="loginButton">Googleでログイン</button>
+  <h1 class="logo logoSetting"><a href="index.php">ReFoods.</a></h1>
+  <div class="Outer">
+    <div class="Inner">
+      <div class="login-box">
+        <h2>ログイン</h2>
+        <div class="loginBtn-box"><button id="loginButton"><img src="icon/google-g-logo.svg" height="20vw" width="20vw"> Googleでログイン</button></div>
+        <p>※ログインにはJavaScript機能が必要です。</p>
+        <p>※ブラウザ側の設定でJavaScript機能を</br>オフにされるとログインできません。</p>
+      </div>
+      <div class="backBtn-box">
+        <a class="backBtn" href="index.php"><img src="icon/chevron-left.svg" height="15vw" width="15vw"> ホームへ戻る</a>
+      </div>
+    </div>
+  </div>
   <button id="logoutButton" style="display: none;">ログアウト</button>
   <div id="userInfo" style="margin-top: 20px;"></div>
 </body>

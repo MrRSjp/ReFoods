@@ -13,7 +13,6 @@ use GeoIp2\Database\Reader; ?>
 <body>
     <?php 
     if ((int) logincheck_back() == 0) {
-        echo "a";
         /* 新規ユーザーか判定（新規であればユーザーデータベースに新規追加） */
         $existenceCheck = $dbw->query('SELECT COUNT(id) FROM users WHERE fa_uid="' . $_POST['fa_uid'] . '" LIMIT 1');
         $existenceCheck->execute();
@@ -95,7 +94,7 @@ use GeoIp2\Database\Reader; ?>
         
         $db = $dbw->prepare('INSERT INTO sessions (session_id, user_id, login_date, device_num, browser_num, platform_name, ip_address, login_location) VALUES ("' . $sid . '", "' . $userid . '", "' . $nowdate . '", "' . $device . '", "' . $browser . '", "' . $platform_name[1] . '", "' . $ip_address . '", "' . $location . '")');
         if ($db->execute()) {
-            setcookie('sid', $sid, 2147483647, "/");
+            setcookie('sid', $sid, 2147439600, "/");
             // データ保存成功後に画面遷移
             header('Location: ../index.php');
             exit;

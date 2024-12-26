@@ -2,25 +2,78 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/master.css">
-    <title>投稿フォーム</title>
-    <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ReFoods" />
+    <link rel="manifest" href="/favicon/manifest.json" />
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('pg/sw.js').then(registration => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+        console.log('ServiceWorker registration failed: ', err);
+        }).catch(err => {
+        console.log(err)
+        });
+        });
+    }
 
-    </style>
+    function previewFile() {
+        var preview = document.getElementById('imgPreview');
+        var file    = document.getElementById('fileInput').files[0];
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/foodspost.css">
+    <title>投稿フォーム | ReFoods.</title>
 </head>
 <body>
-    <h1>投稿</h1>
     <form action="pg/foodspost.php" method="POST" enctype="multipart/form-data">
-        画像: <input type="file"  id="fileInput" name="file">
-        <img id = "img" style="max-width: 100%; height: auto;" name="file"><br/>
-        商品名: <br/><input type="text" name="name" required><br/>
-        場所: <br/><input type="text" name="location" required><br/>
-        量: <br/><input type="text" name="amount" required>kg<br/>
-        値段: <br/><input type="text" name="price" required>円<br/>
-        消費期限（日付）: <br/><input type="date" name="expiration_date" required><br/>
-        消費期限（時間）: <br/><input type="time" name="expiration_time"  required><br/>
-        メールアドレス: <br/><input type="email" name="email" required><br/>
-        <input type="submit" value="投稿">
+        <header>
+            <a href="index.php"><img height="30vh" src="icon/chevron-left.svg" alt=""></a>
+            <h1>投稿</h1>
+            <input class="black-button" type="submit" value="投稿">
+        </header>
+        <main>
+            <div class="contents">
+                <div class="image-box">
+                    <h3 class="formTitle">画像</h3>
+                    <img id="imgPreview" name="file" src="icon/noimg.png">
+                    <input type="file"  id="fileInput" name="file" onchange="previewFile()">
+                </div>
+                <div class="data-box">
+                    <h3 class="formTitle">商品名</h3>
+                    <input class="formitem" type="text" name="name" required>
+                    <h3 class="formTitle">場所</h3>
+                    <input class="formitem" type="text" name="location" required>
+                    <h3 class="formTitle">量</h3>
+                    <div class="formitem"><input type="number" name="amount" min="0" required><a class="support-txt">kg</a></div>
+                    <h3 class="formTitle">値段</h3>
+                    <div class="formitem"><input type="number" name="price" min="0" required><a class="support-txt">円</a></div>
+                    <h3 class="formTitle">消費期限（日付）</h3>
+                    <input class="formitem" type="date" name="expiration_date" required>
+                    <h3 class="formTitle">消費期限（時間）</h3>
+                    <input class="formitem" type="time" name="expiration_time"  required>
+                    <h3 class="formTitle">メールアドレス</h3>
+                    <input class="formitem" type="email" name="email" required>
+                </div>
+            </div>
+        </main>
     </form>
 </body>
 </html>
