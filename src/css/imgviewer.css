@@ -1,0 +1,98 @@
+header {
+    padding: 3vh;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+body {
+    text-align: center;
+}
+.contents {
+    padding: 3vh;
+}
+.logosize {
+    font-size: 3vw;
+}
+
+.postimg {
+}
+
+.post-title {
+    margin-bottom: 2vh;
+}
+
+.post-data {
+    font-size: 1.2rem;
+    margin: 3vh 0vh;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.black-button {
+    padding: 12px 20px;
+    border-radius: 1vh;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.img-box {
+    display: inline-block;
+}
+
+.data-box {
+    display: inline-block;
+    vertical-align: top;
+    padding: 2vw;
+}
+
+.onlySumaho {
+    display: none;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    header {
+        top: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    .onlySumaho {
+        display: initial;
+    }
+    .logosize {
+        font-size: 2rem;
+    }
+    header {
+        position: relative;
+    }
+    .arrow-left {
+        display: inline-block;
+    }
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    .postimg {
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+}

@@ -38,9 +38,9 @@
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
     <form method="get" action="index.php" class="search_container">
         <?php if(isset($_GET["search"])): ?>
-            <input type="text" name="search" size="35" placeholder="　キーワード検索" value="<?php echo htmlspecialchars($_GET["search"], ENT_QUOTES) ?>">
+            <input type="text" name="search" placeholder="　キーワード検索" value="<?php echo htmlspecialchars($_GET["search"], ENT_QUOTES) ?>">
         <?php else: ?>
-            <input type="text" name="search" size="35" placeholder="　キーワード検索">
+            <input type="text" name="search" placeholder="　キーワード検索">
         <?php endif; ?>
         <?php if(isset($_GET["orderby"])): ?>
             <input type="hidden" name="orderby" value="<?php echo $_GET["orderby"] ?>">
@@ -66,10 +66,11 @@
                 <input type="submit" value="更新" class="orderby-update">
             </noscript>
         </form>
-        <?php if((int) logincheck() == 1): ?>
-            <a href="account.php"><button class="black-button">アカウント管理</button></a>
+        <?php $logincheck = logincheck();
+        if((int) $logincheck == 1): ?>
+            <a class="onlyPC" href="account.php"><button class="black-button">アカウント管理</button></a>
         <?php else: ?>
-            <a href="Authentication.html"><button class="black-button">ログイン</button></a>
+            <a class="onlyPC" href="Authentication.html"><button class="black-button">ログイン</button></a>
         <?php endif; ?>
     </div>
 </header>
@@ -78,7 +79,23 @@
         <h1 class="search-title">「<?php echo htmlspecialchars($_GET["search"], ENT_QUOTES) ?>」の検索結果</h1>
     <?php endif; ?>
     <div class="contents">
-        <div id="post-page-button"><a href="foodspost.html">投稿する</a></div>
+        <?php if((int) $logincheck == 1): ?>
+            <div class="onlyPC" id="post-page-button"><a href="foodspost.php">投稿する</a></div>
+        <?php endif; ?>
+        <ul class="shMenu onlySumaho">
+            <li>
+                <a href="index.php"><img src="icon/home.svg" width="30px" height="30px"/><br>
+                <span class="iconname">ホーム</span></a>
+            </li>
+            <li>
+                <a href="foodspost.php"><img src="icon/edit.svg" width="30px" height="30px"/><br>
+                <span class="iconname">投稿</span></a>
+            </li>
+            <li>
+                <a href="account.php"><img src="icon/account.svg" width="30px" height="30px"/><br>
+                <span class="iconname">アカウント管理</span></a>
+            </li>
+        </ul>
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 
         $max_post = 10;
@@ -157,13 +174,13 @@
 
         foreach($posts as $post): ?>
         <div class="post">
-            <div class="data-box">
+            <a href="item.php?id=<?php echo $post['id'] ?>"><div class="data-box">
                 <div class="postimg-box">
                     <img class="postimg" src="postimg/<?php echo htmlspecialchars($post['img_url'], ENT_QUOTES); ?>" alt="<?php echo htmlspecialchars($post['name'], ENT_QUOTES); ?>" />
                 </div>
                 <div class="postdata-box">
                     <p class="post-title"><?php echo htmlspecialchars($post['name'], ENT_QUOTES); ?></p>
-                    <table class="postdata-table">
+                    <table class="postdata-table onlyPC">
                         <tbody>
                             <tr>
                                 <th>場所</th>
@@ -185,9 +202,19 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="onlySumaho">
+                        <p class="bold">場所</p>
+                        <p class="shPostTxt"><?php echo htmlspecialchars($post['location'], ENT_QUOTES); ?></p>
+                        <p class="bold">量</p>
+                        <p class="shPostTxt"><?php echo htmlspecialchars($post['amount'], ENT_QUOTES); ?>kg</p>
+                        <p class="bold">値段</p>
+                        <p class="shPostTxt"><?php echo htmlspecialchars($post['price'], ENT_QUOTES); ?>円</p>
+                        <p class="bold">消費期限</p>
+                        <p><?php echo htmlspecialchars($post['expiration_date'], ENT_QUOTES); ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="buy-box">
+            </div></a>
+            <div class="buy-box onlyPC">
                 <form method="post" action="pg/buy-processing.php"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="購入" class="black-button"></form>
             </div>
         </div>

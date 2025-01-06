@@ -84,3 +84,43 @@ header {
     border-top: solid 1px #000000;
 }
 
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    .onlySumaho {
+        display: initial;
+    }
+    .shMenu {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background: #4C4C4C;
+        color: #ffffff;
+        width: 100%;
+    }
+    .shMenu li {
+        display: inline-block;
+        table-layout: fixed;
+        width: 30%;
+        padding: 5px;
+        list-style: none;
+        text-align: center;
+    }
+    .shMenu a span {
+        display: block;
+        margin-top: 5px;
+        font-size: 10px;
+    }
+}

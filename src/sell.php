@@ -109,7 +109,7 @@
                                     <p class="grayout-button"><a>削除</a></p>
                                     <p class="grayout-text">既に購入済みの為、編集や削除はできません。</p>
                                 <?php else:?>
-                                    <p class="editing-button"><a>編集</a></p>
+                                    <form method="post" action="foodspost.php" class="postform"><input type="hidden" name="editpostid" value="<?php echo $post['id'] ?>"><input type="submit" value="編集" class="editing-button"></form>
                                     <form method="post" action="pg/post-delete.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="削除" class="editing-button"></form>
                                 <?php endif;?>
                             </div>

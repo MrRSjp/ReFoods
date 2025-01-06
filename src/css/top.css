@@ -1,12 +1,4 @@
-header {
-    padding: 3vh;
-    position: static;
-    top: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-}
+
 footer {
     padding: 5vh;
     text-align: center;
@@ -14,72 +6,9 @@ footer {
 .search-title {
     padding: 3vw;
 }
-.contents {
-    padding: 3vh;
-}
+
 .logosize {
     font-size: 3vw;
-}
-.search_container{
-    background: #D9D9D9;
-    box-sizing: border-box;
-    padding: 1vh 2vh;
-    border-radius: 1vh;
-}
-.search_container input[type="text"]{
-    border: none;
-    height: 5vh;
-}
-.search_container input[type="text"]:focus {
-    outline: 0;
-}
-.search_container input[type="text"]{
-    border: none;
-    height: 5vh;
-}
-.search-button{
-    margin-left: 0.5vw;
-    color: #000000;
-}
-.post {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1vw;
-}
-.postdata-box {
-    font-size: 1.8vw;
-}
-
-.postimg-box {
-    margin-right: 3vw;
-}
-
-.data-box {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-}
-.buy-box {
-    height: auto;
-    align-items: flex-end;
-}
-
-.postimg {
-    width: 18vw;
-	height: 18vw;
-	object-fit: cover;
-    border-radius: 1vw;
-}
-
-.post-title {
-    margin-bottom: 2vh;
-    font-weight: bold;
-}
-
-.postdata-table {
-    border-collapse:separate;
-    border-spacing: 0.8vw;
 }
 
 .black-button {
@@ -119,4 +48,164 @@ footer {
     font-weight: bold;
     color: #ffffff;
     background-color: #000000;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+    header {
+        padding: 3vh;
+        position: static;
+        top: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    }
+    .search_container{
+        background: #D9D9D9;
+        box-sizing: border-box;
+        padding: 1vh 2vh;
+        border-radius: 1vh;
+    }
+    .search_container input[type="text"]{
+        border: none;
+        height: 5vh;
+        width: 25vw;
+    }
+    .search_container input[type="text"]:focus {
+        outline: 0;
+    }
+    .search-button{
+        margin-left: 0.5vw;
+        color: #000000;
+    }
+    .contents {
+        padding: 3vh;
+    }
+    .post {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1vw;
+    }
+    .postdata-box {
+        font-size: 1.8vw;
+    }
+    
+    .postimg-box {
+        margin-right: 3vw;
+    }
+    
+    .data-box {
+        display: flex;
+        /* justify-content: space-between; */
+        align-items: center;
+    }
+    .buy-box {
+        height: auto;
+        align-items: flex-end;
+    }
+    
+    .postimg {
+        width: 18vw;
+        height: 18vw;
+        object-fit: cover;
+        border-radius: 1vw;
+    }
+    
+    .post-title {
+        margin-bottom: 2vh;
+        font-weight: bold;
+    }
+    
+    .postdata-table {
+        border-collapse:separate;
+        border-spacing: 0.8vw;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    .onlySumaho {
+        display: initial;
+    }
+    .logosize {
+        font-size: 2rem;
+    }
+    header {
+        padding: 5vw;
+    }
+    .contents {
+        text-align: center;
+    }
+    .search_container{
+        background: #D9D9D9;
+        box-sizing: border-box;
+        padding: 1vh 1vh;
+        margin: 2vh 0vh;
+        border-radius: 1vh;
+    }
+    .search_container input[type="text"]{
+        border: none;
+        height: 3vh;
+        width: 90%;
+    }
+    .search_container input[type="text"]:focus {
+        outline: 0;
+    }
+    .search-button{
+        margin-left: 0.5vw;
+        color: #000000;
+    }
+    .post {
+        display: inline-block;
+        width: 31vw;
+        text-align: initial;
+        margin-bottom: 0.5vh;
+    }
+    .post-title {
+        margin: 0.5vh 0vh;
+    }
+    .shPostTxt {
+        margin-bottom: 0.5vh;
+    }
+    .postimg {
+        width: 31vw;
+        height: 31vw;
+        object-fit: cover;
+        border-radius: 1vw;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .shMenu {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background: #4C4C4C;
+        color: #ffffff;
+        width: 100%;
+    }
+    .shMenu li {
+        display: inline-block;
+        table-layout: fixed;
+        width: 30%;
+        padding: 5px;
+        list-style: none;
+        text-align: center;
+    }
+    .shMenu a span {
+        display: block;
+        margin-top: 5px;
+        font-size: 10px;
+    }
 }

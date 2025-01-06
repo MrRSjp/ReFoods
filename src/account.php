@@ -40,6 +40,20 @@
 </header>
 <body>
     <div class="contents">
+        <ul class="shMenu onlySumaho">
+            <li>
+                <a href="index.php"><img src="icon/home.svg" width="30px" height="30px"/><br>
+                <span class="iconname">ホーム</span></a>
+            </li>
+            <li>
+                <a href="foodspost.php"><img src="icon/edit.svg" width="30px" height="30px"/><br>
+                <span class="iconname">投稿</span></a>
+            </li>
+            <li>
+                <a href="account.php"><img src="icon/account.svg" width="30px" height="30px"/><br>
+                <span class="iconname">アカウント管理</span></a>
+            </li>
+        </ul>
         <?php if ((int) $logincheck == 1) {
             $buser_id = get_userid();
             if(strcmp($buser_id, "e") != 0 ) {
