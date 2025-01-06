@@ -10,9 +10,21 @@ header {
 }
 
 .postimg {
+    display: block;
     width: 50vw;
 	object-fit: cover;
     border-radius: 1vw;
+}
+.eiBtn-Outer {
+    text-align: center;
+}
+.enlarged-imageBtn {
+    display: inline-block;
+    background-color: #d3d3d3;
+    margin: 2vw 0vw;
+    padding: 2vw;
+    border-radius: 1vw;
+    font-weight: bold;
 }
 
 .post-title {

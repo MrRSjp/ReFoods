@@ -54,7 +54,7 @@ if(isset($_GET['id'])) {
         <?php if(!empty($postdata)): ?>
             <div class="img-box">
                 <img class="postimg" src="postimg/<?php echo $postdata['img_url'] ?>" alt="<?php echo $postdata['name'] ?>">
-                <a class="enlarged-image" href="imgviewer.php?postid=<?php echo $postdata['id'] ?>">画像を拡大して見る</a>
+                <div class="eiBtn-Outer"><a class="enlarged-imageBtn" href="postimg/<?php echo $postdata['img_url'] ?>">画像を拡大して見る</a></div>
             </div>
             <div class="data-box">
                 <h2 class="post-title"><?php echo $postdata['name'] ?></h2>

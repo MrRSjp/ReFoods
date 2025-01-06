@@ -33,9 +33,9 @@
     <?php
     $logincheck = logincheck();
     if((int) $logincheck == 1): ?>
-        <a href="account.php"><button class="black-button">アカウント管理</button></a>
+        <a class="onlyPC" href="account.php"><button class="black-button">アカウント管理</button></a>
     <?php else: ?>
-        <a href="Authentication.html"><button class="black-button">ログイン</button></a>
+        <a class="onlyPC" href="Authentication.html"><button class="black-button">ログイン</button></a>
     <?php endif; ?>
 </header>
 <body>
