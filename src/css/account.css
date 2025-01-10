@@ -40,10 +40,6 @@ header {
     vertical-align: middle;
 }
 
-.section {
-    /* margin-bottom: 1vw; */
-}
-
 .user-table {
     border-collapse:separate;
     border-spacing: 2vw;
