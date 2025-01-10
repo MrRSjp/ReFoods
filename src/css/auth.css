@@ -9,28 +9,82 @@ body {
 }
 .login-box {
     border: 1px solid #cccccc;
-    padding: 2vw;
-    margin-bottom: 1vw;
     text-align: initial;
-    border-radius: 1vw;
 }
 .loginBtn-box {
     text-align: center;
-    margin: 4vw 0vw;
 }
 #loginButton {
-    padding: 1vw 5vw;
     border: 1px solid #cccccc;
     font-weight: bold;
-    border-radius: 0.6vw;
 }
 .backBtn-box {
     text-align: initial;
 }
 .backBtn {
     display: inline-block;
-    font-size: 1vw;
-    padding: 1vw;
-    border-radius: 0.6vw;
     background-color: #d3d3d3;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+    .logoSetting {
+        margin: 2vw 0vw;
+    }
+    .Inner {
+        width: 35%;
+    }
+    .login-box {
+        padding: 2vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+    }
+    .loginBtn-box {
+        margin: 4vw 0vw;
+    }
+    #loginButton {
+        padding: 1vw 5vw;
+        border-radius: 0.6vw;
+    }
+    .backBtn {
+        font-size: 1vw;
+        padding: 1vw;
+        border-radius: 0.6vw;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    .logoSetting {
+        margin: 5vw 0vw;
+    }
+    .Inner {
+        width: 85%;
+    }
+    .login-box {
+        padding: 5vw;
+        margin-bottom: 3vw;
+        border-radius: 3vw;
+    }
+    .loginBtn-box {
+        margin: 9vw 0vw;
+    }
+    #loginButton {
+        padding: 3vw 5vw;
+        border-radius: 2vw;
+    }
+    .backBtn {
+        font-size: 3vw;
+        padding: 3vw;
+        border-radius: 1vw;
+    }
 }

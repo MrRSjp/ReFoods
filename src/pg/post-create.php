@@ -36,7 +36,7 @@ if ((int) logincheck_back() == 1) {
                     if($imgdb->execute()){
                         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-                                $uploadDir = 'postimg/';
+                                $uploadDir = '../postimg/';
                                 $fileType = explode('/',$_FILES['file']['type']);
                                 $fileName = 'post' .$id . '.' . $fileType[1];
                                 $uploadFile = $uploadDir . $fileName;
@@ -51,7 +51,7 @@ if ((int) logincheck_back() == 1) {
                         }
 
                         // データ保存成功後に画面遷移
-                    header('Location: ./index.php');
+                    header('Location: ../index.php');
                     exit;
                     }else{
                         echo 'データ保存に失敗しました: ' ;   

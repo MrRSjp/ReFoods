@@ -29,8 +29,9 @@
     <title>出品した商品 | ReFoods.</title>
 </head>
 <header>
+    <a class="onlySumaho" href="account.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="アカウントページへ戻る"></a>
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
-    <div>
+    <div class="onlyPC">
         <form method="get" action="sell.php" class="orderby-form">
             <select name="orderby" id="post-orderby">
                 <option value="" select>表示順</option>
@@ -55,6 +56,17 @@
     <div class="page-title">
         <h1>出品した商品</h1>
     </div>
+    <form class="shOrderby onlySumaho" method="get" action="sell.php" class="orderby-form">
+        <select name="orderby" id="post-orderby">
+            <option value="" select>表示順</option>
+            <option value="new">新しい順</option>
+            <option value="old">古い順</option>
+        </select>
+        <input type="submit" value="更新" class="orderby-update">
+        <noscript>
+            <input type="submit" value="更新" class="orderby-update">
+        </noscript>
+    </form>
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 

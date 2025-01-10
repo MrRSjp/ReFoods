@@ -1,22 +1,11 @@
 header {
-    padding: 3vh;
-    position: static;
-    top: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 footer {
     padding: 5vh;
     text-align: center;
 }
-.contents {
-    padding: 3vh;
-}
-.logosize {
-    font-size: 3vw;
-}
+
 .black-button {
     padding: 12px 20px;
     border-radius: 1vh;
@@ -35,12 +24,10 @@ footer {
 
 .post {
     align-items: center;
-    padding: 1vw;
 }
 
 .data-box {
     display: flex;
-    align-items: center;
 }
 
 .postimg-box {
@@ -48,8 +35,6 @@ footer {
 }
 
 .postimg {
-    width: 18vw;
-	height: 18vw;
 	object-fit: cover;
     border-radius: 1vw;
 }
@@ -59,14 +44,7 @@ footer {
 }
 
 .post-title {
-    font-size: 4vh;
-    margin-bottom: 2vh;
     font-weight: bold;
-}
-
-.post-text {
-    font-size: 3vh;
-    margin: 2vh 0vh;
 }
 
 .postform {
@@ -77,24 +55,15 @@ footer {
     display: inline-block;
     background-color: #000000;
     color: #ffffff;
-    font-size: 1.3vw;
-    padding: 0.6vw;
-    border-radius: 0.5vw;
-    margin-right: 0.5vw;
 }
 
 .grayout-button {
     display: inline-block;
     background-color: #808080;
     color: #ffffff;
-    font-size: 1.3vw;
-    padding: 0.6vw;
-    border-radius: 0.5vw;
-    margin-right: 0.5vw;
 }
 
 .grayout-text {
-    display: inline-block;
     color: #ff0000;
 }
 
@@ -123,4 +92,128 @@ footer {
     font-weight: bold;
     color: #ffffff;
     background-color: #000000;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+    header {
+        padding: 3vh;
+        position: static;
+        top: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logosize {
+        font-size: 3vw;
+    }
+    .contents {
+        padding: 3vh;
+    }
+    .post {
+        padding: 1vw;
+    }
+    .data-box {
+        align-items: center;
+    }
+    .postimg {
+        width: 18vw;
+        height: 18vw;
+    }
+    .post-title {
+        font-size: 4vh;
+        margin-bottom: 2vh;
+    }
+    .post-text {
+        font-size: 3vh;
+        margin: 2vh 0vh;
+    }
+    .editing-button {
+        font-size: 1.3vw;
+        padding: 0.6vw;
+        border-radius: 0.5vw;
+        margin-right: 0.5vw;
+    }
+    
+    .grayout-button {
+        font-size: 1.3vw;
+        padding: 0.6vw;
+        border-radius: 0.5vw;
+        margin-right: 0.5vw;
+    }
+    .grayout-text {
+        display: inline-block;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    header {
+        padding: 2vh;
+        position: relative;
+    }
+    .arrow-left {
+        display: inline-block;
+    }
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+    .logosize {
+        font-size: 2rem
+    }
+    .shOrderby {
+        margin: 2vh 2vh;
+    }
+    .contents {
+        padding: 5vw;
+    }
+    .post {
+        margin-bottom: 5vw;
+    }
+    .postimg {
+        width: 20vw;
+        height: 20vw;
+        margin-right: 3vw;
+    }
+    .post-title {
+        font-size: 5vw;
+        margin-bottom: 2vw;
+    }
+    .post-text {
+        font-size: 3vw;
+        margin: 2vw 0vh;
+    }
+    .grayout-text {
+        font-size: 3vw;
+    }
+    .editing-button {
+        font-size: 3vw;
+        padding: 2vw;
+        border-radius: 1vw;
+        margin-right: 0.5vw;
+    }
+    .grayout-button {
+        font-size: 3vw;
+        padding: 2vw;
+        border-radius: 1vw;
+        margin-right: 0.5vw;
+    }
+    .grayout-text {
+        display: block;
+        margin-top: 2vw;
+    }
 }

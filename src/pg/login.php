@@ -94,7 +94,13 @@ use GeoIp2\Database\Reader; ?>
         
         $db = $dbw->prepare('INSERT INTO sessions (session_id, user_id, login_date, device_num, browser_num, platform_name, ip_address, login_location) VALUES ("' . $sid . '", "' . $userid . '", "' . $nowdate . '", "' . $device . '", "' . $browser . '", "' . $platform_name[1] . '", "' . $ip_address . '", "' . $location . '")');
         if ($db->execute()) {
-            setcookie('sid', $sid, 2147439600, "/");
+            $today = new DateTime('now');
+            $target_day = new DateTime('2038/01/19');
+            if($today < $target_day){
+                setcookie('sid', $sid, 2147439600, "/");
+            }else{
+                setcookie('sid', $sid, time()+60*60*24*3650, "/");
+            }
             // データ保存成功後に画面遷移
             header('Location: ../index.php');
             exit;

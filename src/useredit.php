@@ -29,8 +29,9 @@
     <title>アカウント情報編集 | ReFoods.</title>
 </head>
 <header>
+    <a class="onlySumaho" href="account.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="アカウントページへ戻る"></a>
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
-    <div>
+    <div class="onlyPC">
         <?php 
         $logincheck = logincheck();
         if((int) $logincheck == 1): ?>
@@ -47,7 +48,7 @@
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php if ((int) $logincheck == 1):?>
-            <form action="pg/user-update.php" method="post" enctype="multipart/form-data" class="useredit-form">
+            <form class="useredit-form onlyPC" action="pg/user-update.php" method="post" enctype="multipart/form-data">
                 <table class="useredit-table">
                     <tbody>
                         <tr>
@@ -60,6 +61,13 @@
                         </tr>
                     </tbody>
                 </table>
+                <input type="submit" value="更新する" class="black-button">
+            </form>
+            <form class="form onlySumaho" action="pg/user-update.php" method="post" enctype="multipart/form-data">
+                <h3 class="title">名前</h3>
+                <input class="data textform" type="text" name="username"></p>
+                <h3 class="title">ユーザー画像</h3>
+                <input class="data" type="file" name="userimg" accept="image/jpeg, image/png"></p>
                 <input type="submit" value="更新する" class="black-button">
             </form>
         <?php else: ?>

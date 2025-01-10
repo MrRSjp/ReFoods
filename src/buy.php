@@ -29,8 +29,9 @@
     <title>購入済みの商品 | ReFoods.</title>
 </head>
 <header>
+    <a class="onlySumaho" href="account.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="アカウントページへ戻る"></a>
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
-    <div>
+    <div class="onlyPC">
         <form method="get" action="buy.php" class="orderby-form">
             <select name="orderby" id="post-orderby">
                 <option value="" select>表示順</option>
@@ -55,6 +56,17 @@
     <div class="page-title">
         <h1>購入済みの商品</h1>
     </div>
+    <form class="shOrderby onlySumaho" method="get" action="buy.php" class="orderby-form">
+        <select name="orderby" id="post-orderby">
+            <option value="" select>表示順</option>
+            <option value="new">新しい順</option>
+            <option value="old">古い順</option>
+        </select>
+        <input type="submit" value="更新" class="orderby-update">
+        <noscript>
+            <input type="submit" value="更新" class="orderby-update">
+        </noscript>
+    </form>
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 
@@ -86,14 +98,16 @@
                 }
 
                 foreach($posts as $post): ?>
-                    <div class="post">
+                    <a href="item.php?id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES); ?>"><div class="post">
                         <div class="data-box">
                             <div class="postimg-box">
                                 <img class="postimg" src="postimg/<?php echo htmlspecialchars($post['img_url'], ENT_QUOTES); ?>" alt="<?php echo htmlspecialchars($post['name'], ENT_QUOTES); ?>" />
                             </div>
                             <div class="postdata-box">
                                 <p class="post-title"><?php echo htmlspecialchars($post['name'], ENT_QUOTES); ?></p>
-                                <table class="postdata-table">
+                                <p class="pb-date onlySumaho">購入日：<?php echo htmlspecialchars($post['buy_date'], ENT_QUOTES); ?></p>
+                                <div><form class="onlySumaho" method="post" action="pg/buy-cancel.php"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="購入取消" class="black-button"></form></div>
+                                <table class="postdata-table onlyPC">
                                     <tbody>
                                         <tr>
                                             <th>場所</th>
@@ -117,10 +131,10 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="buy-box">
+                        <div class="buy-box onlyPC">
                         <form method="post" action="pg/buy-cancel.php"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="購入取消" class="black-button"></form>
                         </div>
-                    </div>
+                    </div></a>
                 <?php endforeach; ?>
             <?php } else { ?>
                 <div class="login-urge-box">

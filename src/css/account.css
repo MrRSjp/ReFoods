@@ -65,7 +65,6 @@ header {
 
 .section-item {
     font-weight: bold;
-    padding: 1.5vw;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -100,6 +99,7 @@ header {
         font-size: 2vw;
     }
     .section-item {
+        padding: 1.5vw;
         font-size: 1.5vw;
     }
 }
@@ -129,7 +129,8 @@ header {
         font-size: 5vw;
     }
     .section-item {
-        font-size: 3vw;
+        padding: 3vw;
+        font-size: 5vw;
     }
     .shMenu {
         position: fixed;
@@ -138,6 +139,7 @@ header {
         background: #4C4C4C;
         color: #ffffff;
         width: 100%;
+        padding-bottom: env(safe-area-inset-bottom);
     }
     .shMenu li {
         display: inline-block;

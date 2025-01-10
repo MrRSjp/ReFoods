@@ -1,5 +1,4 @@
 header {
-    padding: 3vh;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 .contents {
@@ -70,6 +69,7 @@ header {
 /* PC向けCSS */
 @media screen and (min-width:830px) {
     header {
+        padding: 3vh;
         top: 0px;
         display: flex;
         justify-content: space-between;
@@ -89,6 +89,7 @@ header {
         font-size: 2rem;
     }
     header {
+        padding: 2vh;
         position: relative;
     }
     .arrow-left {

@@ -1,5 +1,4 @@
 header {
-    padding: 3vh;
     position: static;
     top: 0px;
     display: flex;
@@ -9,9 +8,6 @@ header {
 }
 main {
     text-align: center;
-}
-.contents {
-    padding: 5vh;
 }
 .black-button {
     padding: 12px 20px;
@@ -31,10 +27,7 @@ main {
 }
 #imgPreview {
     display: block;
-    width: 20vw;
-	height: 20vw;
 	object-fit: cover;
-    border-radius: 1vw;
     margin-bottom: 2vh;
 }
 .formTitle {
@@ -49,4 +42,54 @@ main {
 .support-txt {
     font-weight: bold;
     color: #4C4C4C;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+    header {
+        padding: 3vh;
+    }
+    .contents {
+        padding: 5vh;
+    }
+    #imgPreview {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 1vw;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    .onlySumaho {
+        display: initial;
+    }
+    header {
+        padding: 2vh;
+    }
+    .contents {
+        padding: 3vh;
+    }
+    #imgPreview {
+        display: inline-block;
+        width: 55vw;
+        height: 55vw;
+        border-radius: 3vw;
+    }
+    #fileInput {
+        display: inline-block;
+    }
+    .image-box {
+        text-align: center;
+        margin-bottom: 2vh;
+    }
 }

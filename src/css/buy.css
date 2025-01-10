@@ -1,22 +1,9 @@
-
 header {
-    padding: 3vh;
-    position: static;
-    top: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 footer {
     padding: 5vh;
     text-align: center;
-}
-.contents {
-    padding: 3vh;
-}
-.logosize {
-    font-size: 3vw;
 }
 .login-urge-box {
     text-align: center;
@@ -27,7 +14,6 @@ footer {
 .post {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 1vw;
 }
 .postdata-box {
@@ -38,21 +24,12 @@ footer {
     margin-right: 3vw;
 }
 
-.data-box {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-}
-
 .postimg {
-    width: 18vw;
-	height: 18vw;
 	object-fit: cover;
     border-radius: 1vw;
 }
 
 .post-title {
-    margin-bottom: 2vh;
     font-weight: bold;
 }
 
@@ -96,4 +73,102 @@ footer {
     font-weight: bold;
     color: #ffffff;
     background-color: #000000;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+    header {
+        padding: 3vh;
+        position: static;
+        top: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logosize {
+        font-size: 3vw;
+    }
+    .contents {
+        padding: 3vh;
+    }
+    .post {
+        align-items: center;
+    }
+    .data-box {
+        display: flex;
+        align-items: center;
+    }
+    .post-title {
+        margin-bottom: 2vh;
+    }
+    .postimg {
+        width: 18vw;
+        height: 18vw;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    header {
+        padding: 2vh;
+        position: relative;
+    }
+    .arrow-left {
+        display: inline-block;
+    }
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+    .logosize {
+        font-size: 2rem;
+    }
+    .shOrderby {
+        margin: 2vh 2vh;
+    }
+    .contents {
+        padding: 2vh;
+    }
+    .post {
+        align-items: start;
+    }
+    .postimg-box {
+        display: inline-block;
+    }
+    .postdata-box {
+        display: inline-block;
+    }
+    .data-box {
+        align-items: start;
+    }
+    .post-title {
+        margin-bottom: 1vh;
+    }
+    .postimg {
+        width: 20vw;
+        height: 20vw;
+    }
+    .post-title {
+        font-size: 5vw;
+    }
+    .pb-date {
+        font-size: 3vw;
+    }
+    .black-button {
+        margin-top: 1vh;
+        font-size: 3vw;
+    }
 }

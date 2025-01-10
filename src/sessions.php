@@ -29,8 +29,9 @@
     <title>有効なログイン済端末の管理 | ReFoods.</title>
 </head>
 <header>
+    <a class="onlySumaho" href="account.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="アカウントページへ戻る"></a>
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
-    <div>
+    <div class="onlyPC">
         <form method="get" action="sessions.php" class="orderby-form">
             <select name="orderby" id="post-orderby">
                 <option value="" select>表示順</option>
@@ -45,9 +46,9 @@
         <?php 
         $logincheck = logincheck();
         if((int) $logincheck == 1): ?>
-            <a href="account.php"><button class="black-button">アカウント管理</button></a>
+            <a class="onlyPC" href="account.php"><button class="black-button">アカウント管理</button></a>
         <?php else: ?>
-            <a href="Authentication.html"><button class="black-button">ログイン</button></a>
+            <a class="onlyPC" href="Authentication.html"><button class="black-button">ログイン</button></a>
         <?php endif; ?>
     </div>
 </header>
@@ -55,6 +56,17 @@
     <div class="page-title">
         <h1>有効なログイン済端末の管理</h1>
     </div>
+    <form class="shOrderby onlySumaho" method="get" action="sessions.php" class="orderby-form">
+        <select name="orderby" id="post-orderby">
+            <option value="" select>表示順</option>
+            <option value="new">新しい順</option>
+            <option value="old">古い順</option>
+        </select>
+        <input type="submit" value="更新" class="orderby-update">
+        <noscript>
+            <input type="submit" value="更新" class="orderby-update">
+        </noscript>
+    </form>
     <div class="contents">
         <!-- JavaScript無効ブラウザ対策でAjax利用見直し -->
         <?php 
@@ -141,9 +153,10 @@
                                     <?php else: ?>
                                         <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.png" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                     <?php endif; ?>
+                                    <div class="blackout-button onlySumaho">現在のセッション</div>
                                 </div>
                             </div>
-                            <div class="buy-box">
+                            <div class="buy-box onlyPC">
                                 <div class="blackout-button">現在のセッション</div>
                             </div>
                         </div>
@@ -162,9 +175,10 @@
                                     <?php else: ?>
                                         <p class="browser-name"><p class="browser-name-item">ブラウザ名：</p><img class="browser-name-item" src="icon/session/browser<?php echo htmlspecialchars($post['browser_num'], ENT_QUOTES); ?>.png" alt="<?php echo $browsername; ?>" width="20vw" height="20vw" /><p class="browser-name-item"><?php echo $browsername; ?></p></p>
                                     <?php endif; ?>
+                                    <form class="onlySumaho" method="post" action="pg/session-logout.php"><input type="hidden" name="id" value="<?php echo $post['id'] ?>"><input type="submit" value="このセッションをログアウトする" class="black-button"></form>
                                 </div>
                             </div>
-                            <div class="buy-box">
+                            <div class="buy-box onlyPC">
                                 <form method="post" action="pg/session-logout.php"><input type="hidden" name="id" value="<?php echo $post['id'] ?>"><input type="submit" value="このセッションをログアウトする" class="black-button"></form>
                             </div>
                         </div>

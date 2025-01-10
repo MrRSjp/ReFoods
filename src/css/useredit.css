@@ -1,10 +1,4 @@
 header {
-    padding: 3vh;
-    position: static;
-    top: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 footer {
@@ -43,30 +37,84 @@ footer {
     padding: 5vw;
 }
 
-.useredit-form {
-    display:inline-block;
-    margin-top: 10vh;
-}
-
-.useredit-table {
-    border-collapse:separate;
-    border-spacing: 1vw;
-}
-
-.useredit-table-th {
-    font-size: 1.5vw;
-    text-align: right;
-    vertical-align: middle;
-}
-
-.useredit-table-td {
-    font-size: 1.5vw;
-    text-align: left;
-    vertical-align: middle;
-}
-
 .textform {
     padding: 0.5vw;
     background-color: #E5E5EA;
     border-radius: 0.5vw;
+}
+
+/* PC向けCSS */
+@media screen and (min-width:830px) {
+    .onlyPC {
+        display: initial;
+    }
+    .onlySumaho {
+        display: none;
+    }
+    header {
+        padding: 3vh;
+        position: static;
+        top: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logosize {
+        font-size: 2rem;
+    }
+    .useredit-form {
+        display:inline-block;
+        margin-top: 10vh;
+    }
+    
+    .useredit-table {
+        border-collapse:separate;
+        border-spacing: 1vw;
+    }
+    
+    .useredit-table-th {
+        font-size: 1.5vw;
+        text-align: right;
+        vertical-align: middle;
+    }
+    
+    .useredit-table-td {
+        font-size: 1.5vw;
+        text-align: left;
+        vertical-align: middle;
+    }
+}
+
+/* スマホ向けCSS */
+@media screen and (max-width:829px) {
+    .onlyPC {
+        display: none;
+    }
+    header {
+        padding: 2vh;
+        position: relative;
+    }
+    .arrow-left {
+        display: inline-block;
+    }
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+    .logosize {
+        font-size: 2rem;
+    }
+    .form {
+        text-align: initial;
+    }
+    .data {
+        margin-bottom: 1vh;
+    }
+    .black-button {
+        margin-top: 1vh;
+    }
 }
