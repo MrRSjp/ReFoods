@@ -178,6 +178,9 @@ footer {
     .shOrderby {
         margin: 2vh 2vh;
     }
+    .post {
+        margin-bottom: 2vh;
+    }
     .postimg {
         width: 25vw;
         height: 25vw;
