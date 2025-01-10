@@ -34,10 +34,8 @@ main {
     margin-bottom: 1vh;
 }
 .formitem {
-    padding: 0.5vw;
     margin-bottom: 2vh;
     background-color: #E5E5EA;
-    border-radius: 0.5vw;
 }
 .support-txt {
     font-weight: bold;
@@ -62,6 +60,10 @@ main {
         width: 20vw;
         height: 20vw;
         border-radius: 1vw;
+    }
+    .formitem {
+        padding: 0.5vw;
+        border-radius: 0.5vw;
     }
 }
 
@@ -91,5 +93,10 @@ main {
     .image-box {
         text-align: center;
         margin-bottom: 2vh;
+    }
+    .formitem {
+        padding: 3vw;
+        width: 100%;
+        border-radius: 2vw;
     }
 }

@@ -38,9 +38,7 @@ footer {
 }
 
 .textform {
-    padding: 0.5vw;
     background-color: #E5E5EA;
-    border-radius: 0.5vw;
 }
 
 /* PC向けCSS */
@@ -83,6 +81,11 @@ footer {
         text-align: left;
         vertical-align: middle;
     }
+
+    .textform {
+        padding: 0.5vw;
+        border-radius: 0.5vw;
+    }
 }
 
 /* スマホ向けCSS */
@@ -111,8 +114,16 @@ footer {
     .form {
         text-align: initial;
     }
+    .title {
+        margin-bottom: 1vh;
+    }
     .data {
         margin-bottom: 1vh;
+    }
+    .textform {
+        padding: 3vw;
+        width: 80%;
+        border-radius: 2vw;
     }
     .black-button {
         margin-top: 1vh;
