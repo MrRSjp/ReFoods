@@ -98,7 +98,7 @@
                 }
 
                 foreach($posts as $post): ?>
-                    <a href="item.php?id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES); ?>"><div class="post">
+                    <a href="item.php?back=buy&id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES); ?>"><div class="post">
                         <div class="data-box">
                             <div class="postimg-box">
                                 <img class="postimg" src="postimg/<?php echo htmlspecialchars($post['img_url'], ENT_QUOTES); ?>" alt="<?php echo htmlspecialchars($post['name'], ENT_QUOTES); ?>" />

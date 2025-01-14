@@ -41,7 +41,15 @@ if(isset($_GET['id'])) {
     <?php endif; ?>
 </head>
 <header>
-    <a class="onlySumaho arrow-left" href="index.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw"></a>
+    <?php if(isset($_GET['back'])): ?>
+        <?php if(strcmp($_GET['back'], "buy") == 0): ?>
+            <a class="onlySumaho arrow-left" href="buy.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw"></a>
+        <?php else: ?>
+            <a class="onlySumaho arrow-left" href="index.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw"></a>
+        <?php endif; ?>
+    <?php else: ?>
+        <a class="onlySumaho arrow-left" href="index.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw"></a>
+    <?php endif; ?>
     <a href="index.php"><p class="logo logosize">ReFoods.</p></a>
     <?php if((int) logincheck() == 1): ?>
         <a class="onlyPC" href="account.php"><button class="black-button">アカウント管理</button></a>
@@ -63,7 +71,46 @@ if(isset($_GET['id'])) {
                 <p class="post-data">消費期限：<?php echo $postdata['expiration_date'] ?></p>
                 <p class="post-data">場所：<?php echo $postdata['location'] ?></p>
                 <p class="post-data">メールアドレス：<?php echo $postdata['email'] ?></p>
-                <form method="post" action="pg/buy-processing.php"><input type="hidden" name="post_id" value="<?php echo $postdata['id'] ?>"><input type="submit" value="購入" class="buy-button"></form>
+                <?php 
+                $buser_id = get_userid();
+                if(strcmp($buser_id, "e") != 0 ) {
+                    $user_id = $buser_id; ?>
+                    <?php if(strcmp($postdata['is_purchased'], "0") == 0): ?>
+                        <form method="post" action="pg/buy-processing.php"><input type="hidden" name="post_id" value="<?php echo $postdata['id'] ?>"><input type="submit" value="購入" class="editing-button"></form>
+                    <?php endif; ?>
+                    <?php if(strcmp($postdata['is_purchased'], "1") == 0 && !strcmp($postdata['poster_id'], $user_id) == 0 && !strcmp($postdata['purchaser_id'], $user_id) == 0): ?>
+                        <div>購入不可</div>
+                    <?php elseif(strcmp($postdata['poster_id'], $user_id) == 0 || strcmp($postdata['purchaser_id'], $user_id) == 0): ?>
+                        <div class="editing-box">
+                            <?php if(strcmp($postdata['poster_id'], $user_id) == 0): ?>
+                                <?php if(strcmp($postdata['is_purchased'], "0") == 0): ?>
+                                    <form method="post" action="foodspost.php" class="postform"><input type="hidden" name="editpostid" value="<?php echo $post['id'] ?>"><input type="submit" value="編集" class="editing-button"></form>
+                                    <form method="post" action="pg/post-delete.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="削除" class="editing-button"></form>
+                                <?php elseif(strcmp($postdata['is_purchased'], "1") == 0): ?>
+                                    <?php 
+                                    $datadate = new DateTime(substr($postdata['post_date'], 0, 10));
+                                    $nowdate = new DateTime();
+                                    $date = date_diff($datadate, $nowdate);
+
+                                    if((int) $date->days <= 7):?>
+                                        <!-- <p class="editing-button"><a>売却取消</a></p> -->
+                                    <?php endif;?>
+                                    <div class="sell-box">
+                                        <form method="post" action="pg/sell-cancel.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="売却取消" class="editing-button"></form>
+                                        <p class="grayout-button"><a>編集</a></p>
+                                        <p class="grayout-button"><a>削除</a></p>
+                                    </div>
+                                    <p class="grayout-text">既に購入済みの為、編集や削除はできません。</p>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if(strcmp($postdata['purchaser_id'], $user_id) == 0): ?>
+                                <form method="post" action="pg/buy-cancel.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $postdata['id'] ?>"><input type="submit" value="購入取消" class="editing-button"></form>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                <?php } else { ?>
+                    <div>購入するにはログインしてください</div>
+                <?php } ?>
             </div>
         <?php else: ?>
             <p>お探しの商品が見つかりませんでした</p>

@@ -34,14 +34,34 @@ header {
     font-size: 1.2rem;
     margin: 3vh 0vh;
 }
+.postform {
+    display: inline-block;
+}
 
-.buy-button {
+.editing-box {
+    margin: 2vh 0vh;
+}
+.sell-box {
+    margin-bottom: 1vh;
+}
+.editing-button {
     display: inline-block;
     padding: 12px 20px;
     border-radius: 1vh;
     font-weight: bold;
     color: #ffffff;
     background-color: #000000;
+}
+.grayout-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 1vh;
+    font-weight: bold;
+    background-color: #808080;
+    color: #ffffff;
+}
+.grayout-text {
+    color: #ff0000;
 }
 
 .black-button {
