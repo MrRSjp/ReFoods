@@ -62,7 +62,15 @@ if((int) $logincheck == 1) {
         <?php if(isset($postdata)):?>
             <form action="pg/post-update.php" method="POST" enctype="multipart/form-data">
                 <header>
-                    <a href="sell.php"><img height="30vh" src="icon/chevron-left.svg" alt=""></a>
+                    <?php if(isset($_POST['back'])): ?>
+                        <?php if(strcmp($_POST['back'], "item") == 0): ?>
+                            <a href="item.php?id=<?php echo $_POST['editpostid'] ?>"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="戻る"></a>
+                        <?php else: ?>
+                            <a href="sell.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="戻る"></a>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <a href="sell.php"><img src="icon/chevron-left.svg" width="25vw" height="25vw" alt="戻る"></a>
+                    <?php endif; ?>
                     <h1>更新</h1>
                     <input class="black-button" type="submit" value="更新">
                 </header>

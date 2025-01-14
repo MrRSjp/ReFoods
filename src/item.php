@@ -84,8 +84,8 @@ if(isset($_GET['id'])) {
                         <div class="editing-box">
                             <?php if(strcmp($postdata['poster_id'], $user_id) == 0): ?>
                                 <?php if(strcmp($postdata['is_purchased'], "0") == 0): ?>
-                                    <form method="post" action="foodspost.php" class="postform"><input type="hidden" name="editpostid" value="<?php echo $post['id'] ?>"><input type="submit" value="編集" class="editing-button"></form>
-                                    <form method="post" action="pg/post-delete.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="削除" class="editing-button"></form>
+                                    <form method="post" action="foodspost.php" class="postform"><input type="hidden" name="editpostid" value="<?php echo $postdata['id'] ?>"><input type="hidden" name="back" value="item"><input type="submit" value="編集" class="editing-button"></form>
+                                    <form method="post" action="pg/post-delete.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $postdata['id'] ?>"><input type="submit" value="削除" class="editing-button"></form>
                                 <?php elseif(strcmp($postdata['is_purchased'], "1") == 0): ?>
                                     <?php 
                                     $datadate = new DateTime(substr($postdata['post_date'], 0, 10));
@@ -96,7 +96,7 @@ if(isset($_GET['id'])) {
                                         <!-- <p class="editing-button"><a>売却取消</a></p> -->
                                     <?php endif;?>
                                     <div class="sell-box">
-                                        <form method="post" action="pg/sell-cancel.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $post['id'] ?>"><input type="submit" value="売却取消" class="editing-button"></form>
+                                        <form method="post" action="pg/sell-cancel.php" class="postform"><input type="hidden" name="post_id" value="<?php echo $postdata['id'] ?>"><input type="submit" value="売却取消" class="editing-button"></form>
                                         <p class="grayout-button"><a>編集</a></p>
                                         <p class="grayout-button"><a>削除</a></p>
                                     </div>
