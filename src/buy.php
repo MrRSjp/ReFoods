@@ -159,7 +159,7 @@
                 <?php endif; ?>
                 <a><?php echo $page ?>ページ目</a>
                 <?php
-                $counts = $dbr->query('SELECT COUNT(*) AS cnt FROM posts');
+                $counts = $dbr->query('SELECT COUNT(*) AS cnt FROM posts WHERE purchaser_id=' . $user_id);
                 $count = $counts->fetch();
                 $max_page = ceil($count['cnt'] / $max_post);
                 if ($page < $max_page): ?>

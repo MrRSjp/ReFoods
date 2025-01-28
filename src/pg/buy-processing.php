@@ -36,23 +36,9 @@ require('modules.php'); ?>
 
                     //メール送信
                     $to = $selluserdata['email'];
-                    $subject = "【Refoods】「" . $postdata['name'] . "」購入成立のお知らせ";
-                    $message = "Refoodsをご利用いただき、誠にありがとうございます。\n\n
-                    " . $selluserdata['name'] . "様が出品された下記商品につきまして、購入者様により購入処理がされた為、購入が成立した事をお知らせします。今後の取引につきましては、当事者間でメールにてご連絡いただきますようよろしくお願いします。\n\n
-                    ------\n
-                    -商品情報-\n
-                    商品名：" . $postdata['name'] . "\n
-                    価格：" . $postdata['price'] . "\n
-                    量：" . $postdata['amount'] . "\n
-                    投稿日：" . $postdata['post_date'] . "\n
-                    ------\n
-                    -購入者様情報-\n
-                    名前：" . $buyuserdata['name'] . "\n
-                    メールアドレス：" . $buyuserdata['email'] . "\n
-                    ------\n\n
-                    ※このメールは自動送信です。\n
-                    ※このメールアドレスは送信専用です。このメールに返信されても、Refoods側からは返信できません。予めご了承ください。";
-                    $headers = "From: no-reply@refoods.webpg.jp";
+                    $subject = "【ReFoods】「" . $postdata['name'] . "」購入成立のお知らせ";
+                    $message = "ReFoodsをご利用いただき、誠にありがとうございます。\n\n" . $selluserdata['name'] . "様が出品された下記商品につきまして、購入者様により購入処理がされた為、購入が成立した事をお知らせします。今後の取引につきましては、当事者間でメールにてご連絡いただきますようよろしくお願いします。\n\n------\n-商品情報-\n商品名：" . $postdata['name'] . "\n価格：" . $postdata['price'] . "\n量：" . $postdata['amount'] . "\n投稿日：" . $postdata['post_date'] . "\n------\n-購入者様情報-\n名前：" . $buyuserdata['name'] . "\nメールアドレス：" . $buyuserdata['email'] . "\n------\n\n※このメールは自動送信です。\n※このメールアドレスは送信専用です。このメールに返信されても、ReFoods側からは返信できません。予めご了承ください。";
+                    $headers = "From: ReFoods.<no-reply@refoods.webpg.jp>";
                     mb_send_mail($to, $subject, $message, $headers);
 
                     // データ保存成功後に画面遷移

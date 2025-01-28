@@ -25,7 +25,7 @@ if ((int) logincheck_back() == 1) {
                 
                 $expiration_datetime = $expiration_date . ' ' . $expiration_time;
 
-                $stmt = $dbw->prepare('INSERT INTO posts (id, name, location, amount, price, expiration_date, email, post_date, poster_id) VALUES (5,"'.$name.'","'.$location.'",'.$amount.','.$price.',"'.$expiration_datetime.'","'.$email.'","'.$post_date.'","' . $user_id . '")' );
+                $stmt = $dbw->prepare('INSERT INTO posts (name, location, amount, price, expiration_date, email, post_date, poster_id) VALUES ("'.$name.'","'.$location.'",'.$amount.','.$price.',"'.$expiration_datetime.'","'.$email.'","'.$post_date.'","' . $user_id . '")' );
 
                 if ($stmt->execute()) {
                     $id = $dbw->lastInsertId();

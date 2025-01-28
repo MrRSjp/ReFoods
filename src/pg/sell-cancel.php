@@ -30,24 +30,9 @@ require('modules.php'); ?>
 
                     //メール送信
                     $to = $buyuserdata['email'];
-                    $subject = "【Refoods】出品者様都合による購入取消のお知らせ";
-                    $message = "Refoodsをご利用いただき、誠にありがとうございます。\n\n
-                    先日購入された下記商品につきまして、出品者様により売却取消処理がされた為、購入が取消された事をお知らせします。本件につきましてご質問等ございましたら、当事者間でメールにてご連絡いただきますようよろしくお願いします。\n\n
-                    ------\n
-                    -商品情報-\n
-                    商品名：" . $postdata['name'] . "\n
-                    価格：" . $postdata['price'] . "\n
-                    量：" . $postdata['amount'] . "\n
-                    場所：" . $postdata['location'] . "\n
-                    購入日：" . $postdata['buy_date'] . "\n
-                    ------\n
-                    -出品者様情報-\n
-                    名前：" . $selluserdata['name'] . "\n
-                    メールアドレス：" . $selluserdata['email'] . "\n
-                    ------\n\n
-                    ※このメールは自動送信です。\n
-                    ※このメールアドレスは送信専用です。このメールに返信されても、Refoods側からは返信できません。予めご了承ください。";
-                    $headers = "From: no-reply@refoods.webpg.jp";
+                    $subject = "【ReFoods】出品者様都合による購入取消のお知らせ";
+                    $message = "ReFoodsをご利用いただき、誠にありがとうございます。\n\n先日購入された下記商品につきまして、出品者様により売却取消処理がされた為、購入が取消された事をお知らせします。本件につきましてご質問等ございましたら、当事者間でメールにてご連絡いただきますようよろしくお願いします。\n\n------\n-商品情報-\n商品名：" . $postdata['name'] . "\n価格：" . $postdata['price'] . "\n量：" . $postdata['amount'] . "\n場所：" . $postdata['location'] . "\n購入日：" . $postdata['buy_date'] . "\n------\n-出品者様情報-\n名前：" . $selluserdata['name'] . "\nメールアドレス：" . $selluserdata['email'] . "\n------\n\n※このメールは自動送信です。\n※このメールアドレスは送信専用です。このメールに返信されても、ReFoods側からは返信できません。予めご了承ください。";
+                    $headers = "From: ReFoods.<no-reply@refoods.webpg.jp>";
                     mb_send_mail($to, $subject, $message, $headers);
 
                     // データ保存成功後に画面遷移

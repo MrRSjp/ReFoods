@@ -87,7 +87,7 @@ if((int) $logincheck == 1) {
                             <h3 class="formTitle">場所</h3>
                             <input class="formitem" type="text" name="location" value="<?php echo htmlspecialchars($postdata['location'], ENT_QUOTES); ?>" required>
                             <h3 class="formTitle">量</h3>
-                            <div class="formitem"><input type="number" name="amount" min="0" value="<?php echo htmlspecialchars($postdata['amount'], ENT_QUOTES); ?>" required><a class="support-txt">kg</a></div>
+                            <div class="formitem"><input type="number" name="amount" min="0" step="0.001" value="<?php echo htmlspecialchars($postdata['amount'], ENT_QUOTES); ?>" required><a class="support-txt">kg</a></div>
                             <h3 class="formTitle">値段</h3>
                             <div class="formitem"><input type="number" name="price" min="0" value="<?php echo htmlspecialchars($postdata['price'], ENT_QUOTES); ?>" required><a class="support-txt">円</a></div>
                             <h3 class="formTitle">消費期限（日付）</h3>
@@ -121,7 +121,7 @@ if((int) $logincheck == 1) {
                             <h3 class="formTitle">場所</h3>
                             <input class="formitem" type="text" name="location" required>
                             <h3 class="formTitle">量</h3>
-                            <div class="formitem"><input type="number" name="amount" min="0" required><a class="support-txt">kg</a></div>
+                            <div class="formitem"><input type="number" name="amount" min="0" step="0.001" required><a class="support-txt">kg</a></div>
                             <h3 class="formTitle">値段</h3>
                             <div class="formitem"><input type="number" name="price" min="0" required><a class="support-txt">円</a></div>
                             <h3 class="formTitle">消費期限（日付）</h3>
