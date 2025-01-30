@@ -34,7 +34,7 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `location` text NOT NULL,
-  `amount` int(11) NOT NULL,
+  `amount` float NOT NULL,
   `price` int(11) NOT NULL,
   `expiration_date` datetime NOT NULL,
   `img_url` text NOT NULL,
